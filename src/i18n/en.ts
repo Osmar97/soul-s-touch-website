@@ -53,6 +53,9 @@ export const en = {
     rights: "All rights reserved.",
     serviceArea: "Serving Lisbon and surrounding areas",
   },
-} as const;
+};
 
-export type Dictionary = typeof en;
+/** Widened shape so translations only need matching keys, not identical strings. */
+export type Dictionary = {
+  [Group in keyof typeof en]: { [Key in keyof (typeof en)[Group]]: string };
+};
