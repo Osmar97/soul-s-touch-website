@@ -7,13 +7,15 @@ export const pt: Dictionary = {
       "Soul's Touch by Dani é um serviço de massagem ao domicílio em Lisboa. A Dani desloca-se a sua casa com marquesa, lençóis, toalhas e óleos — tudo para um tratamento calmo e profissional.",
   },
   nav: {
+    home: "Início",
+    experience: "Experiência",
     about: "Sobre",
     services: "Serviços",
     howItWorks: "Como funciona",
     reviews: "Testemunhos",
     faq: "Perguntas",
     contact: "Contacto",
-    book: "Marcar sessão",
+    book: "Marcar",
     menu: "Menu",
     close: "Fechar menu",
     open: "Abrir menu",
@@ -26,17 +28,24 @@ export const pt: Dictionary = {
   },
   hero: {
     eyebrow: "Massagem ao domicílio · Lisboa",
-    title: "Massagem, em sua casa",
+    titleLineOne: "Abrande.",
+    titleLineTwo: "Regresse a si.",
+    title: "Abrande. Regresse a si.",
     subtitle:
-      "A Dani desloca-se até si com marquesa, lençóis lavados, toalhas e óleos. Só tem de escolher a divisão.",
+      "Massagem pensada para o ajudar a reencontrar o corpo, aquietar a mente e guardar um momento só para si.",
+    ctaSecondary: "Conhecer a experiência",
+    scroll: "Deslize para explorar",
+    imageAlt:
+      "Sala à luz de velas com marquesa vestida de linho, toalhas dobradas e óleo",
   },
   common: {
     readMore: "Saber mais",
-    bookNow: "Marcar sessão",
+    bookNow: "Reserve o seu momento",
     language: "Idioma",
     loading: "A carregar",
     error: "Algo correu mal. Por favor, tente novamente.",
   },
+
   booking: {
     eyebrow: "Reservas",
     title: "Reserve a sua sessão",
