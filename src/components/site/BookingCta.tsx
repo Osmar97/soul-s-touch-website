@@ -8,7 +8,7 @@ type Variants = VariantProps<typeof siteButtonVariants>;
 
 /**
  * The single booking entry point. When VITE_SETMORE_URL is configured it opens
- * the Setmore page; otherwise it scrolls to the contact section. No fake
+ * the Setmore page; otherwise it scrolls to the booking section. No fake
  * booking flow is ever rendered.
  */
 export function BookingCta({
@@ -45,7 +45,7 @@ export function BookingCta({
       onClick={() => {
         onNavigate?.();
         document
-          .getElementById(SECTIONS.contact)
+          .getElementById(SECTIONS.booking)
           ?.scrollIntoView({ behavior: "smooth", block: "start" });
       }}
     >

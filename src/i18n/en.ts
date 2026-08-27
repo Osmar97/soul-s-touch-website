@@ -5,13 +5,15 @@ export const en = {
       "Soul's Touch by Dani is a mobile massage service in Lisbon. Dani comes to your home with table, linens, towels and oils — everything for a calm, professional treatment.",
   },
   nav: {
+    home: "Home",
+    experience: "Experience",
     about: "About",
     services: "Services",
     howItWorks: "How it works",
     reviews: "Reviews",
     faq: "FAQ",
     contact: "Contact",
-    book: "Book a session",
+    book: "Book",
     menu: "Menu",
     close: "Close menu",
     open: "Open menu",
@@ -24,17 +26,23 @@ export const en = {
   },
   hero: {
     eyebrow: "Mobile massage · Lisbon",
-    title: "Massage, brought to your home",
+    titleLineOne: "Slow down.",
+    titleLineTwo: "Come back to yourself.",
+    title: "Slow down. Come back to yourself.",
     subtitle:
-      "Dani travels to you with the massage table, fresh linens, towels and oils. You simply choose the room.",
+      "Massage designed to help you reconnect with your body, quiet your mind and simply take a moment for yourself.",
+    ctaSecondary: "Explore the experience",
+    scroll: "Scroll to explore",
+    imageAlt: "A candlelit room prepared with a linen-draped massage table, folded towels and oil",
   },
   common: {
     readMore: "Read more",
-    bookNow: "Book a session",
+    bookNow: "Book your moment",
     language: "Language",
     loading: "Loading",
     error: "Something went wrong. Please try again.",
   },
+
   booking: {
     eyebrow: "Reservations",
     title: "Reserve your session",

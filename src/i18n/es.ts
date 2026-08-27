@@ -7,13 +7,15 @@ export const es: Dictionary = {
       "Soul's Touch by Dani es un servicio de masaje a domicilio en Lisboa. Dani se desplaza a tu casa con camilla, sábanas, toallas y aceites — todo para un tratamiento tranquilo y profesional.",
   },
   nav: {
+    home: "Inicio",
+    experience: "Experiencia",
     about: "Sobre",
     services: "Servicios",
     howItWorks: "Cómo funciona",
     reviews: "Opiniones",
     faq: "Preguntas",
     contact: "Contacto",
-    book: "Reservar sesión",
+    book: "Reservar",
     menu: "Menú",
     close: "Cerrar menú",
     open: "Abrir menú",
@@ -26,17 +28,24 @@ export const es: Dictionary = {
   },
   hero: {
     eyebrow: "Masaje a domicilio · Lisboa",
-    title: "Masaje, en tu propia casa",
+    titleLineOne: "Baja el ritmo.",
+    titleLineTwo: "Vuelve a ti.",
+    title: "Baja el ritmo. Vuelve a ti.",
     subtitle:
-      "Dani se desplaza hasta ti con camilla, sábanas limpias, toallas y aceites. Tú solo eliges la habitación.",
+      "Un masaje pensado para reconectar con tu cuerpo, calmar la mente y regalarte un momento solo para ti.",
+    ctaSecondary: "Descubre la experiencia",
+    scroll: "Desliza para explorar",
+    imageAlt:
+      "Sala a la luz de las velas con camilla vestida de lino, toallas dobladas y aceite",
   },
   common: {
     readMore: "Saber más",
-    bookNow: "Reservar sesión",
+    bookNow: "Reserva tu momento",
     language: "Idioma",
     loading: "Cargando",
     error: "Algo salió mal. Inténtalo de nuevo.",
   },
+
   booking: {
     eyebrow: "Reservas",
     title: "Reserva tu sesión",
