@@ -213,3 +213,51 @@
     padding-inline: 4rem;
   }
 }
+
+/* Restrained entrance motion: a short fade + slight rise, nothing more. */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@utility rise-in {
+  animation: rise-in 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+/* Slow vertical drift for the scroll indicator hairline. */
+@keyframes scroll-hint {
+  0% {
+    transform: scaleY(0.2);
+    transform-origin: top;
+    opacity: 0.2;
+  }
+  45% {
+    transform: scaleY(1);
+    transform-origin: top;
+    opacity: 0.8;
+  }
+  55% {
+    transform: scaleY(1);
+    transform-origin: bottom;
+    opacity: 0.8;
+  }
+  100% {
+    transform: scaleY(0.2);
+    transform-origin: bottom;
+    opacity: 0.2;
+  }
+}
+
+@utility scroll-hint-line {
+  display: block;
+  width: 1px;
+  height: 3.5rem;
+  background: var(--color-gold);
+  animation: scroll-hint 3.2s ease-in-out infinite;
+}
