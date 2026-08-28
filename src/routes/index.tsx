@@ -6,10 +6,10 @@ import { Section } from "@/components/site/Section";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { BookingCta } from "@/components/site/BookingCta";
 import { MobileBookingBar } from "@/components/site/MobileBookingBar";
+import { Hero } from "@/components/site/Hero";
 import { SECTIONS, SITE } from "@/config/site";
 import { useT } from "@/i18n";
 import { en } from "@/i18n/en";
-import heroImage from "@/assets/hero-massage.jpg";
 
 
 const TITLE = en.meta.title;
