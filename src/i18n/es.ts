@@ -60,6 +60,45 @@ export const es: Dictionary = {
     empty: "Las primeras opiniones aparecerán aquí muy pronto.",
     submitted: "Gracias — tu opinión se ha enviado para aprobación.",
   },
+  philosophy: {
+    eyebrow: "Filosofía de marca",
+    title: "El alma detrás de Soul's Touch",
+    quote:
+      "Un nombre capaz de transmitir paz, relajación, conexión y bienestar emocional.",
+    bodyOne:
+      "El masaje no es solo un lujo. Es una forma de autocuidado y de reconectar con uno mismo.",
+    bodyTwo:
+      "Soul's Touch nace para ofrecer un momento para bajar el ritmo, respirar y sentirse cuidado.",
+  },
+  statement: {
+    lineOne: "Un momento para bajar el ritmo.",
+    lineTwo: "Un momento para reconectar.",
+    support: "Tu cuerpo merece un momento de calma.",
+  },
+  homeExperience: {
+    eyebrow: "Masaje a domicilio",
+    titleLineOne: "Tu espacio.",
+    titleLineTwo: "Tu momento.",
+    body: "Soul's Touch lleva la experiencia del masaje hasta ti. Disfruta del tratamiento en la comodidad y privacidad de tu casa, sin necesidad de desplazarte antes ni después de la sesión.",
+    includesTitle: "La experiencia incluye",
+    itemTable: "Camilla de masaje",
+    itemLinens: "Sábanas limpias",
+    itemTowel: "Toalla limpia",
+    itemOils: "Aceites de masaje",
+    itemSetup: "Montaje y recogida completos",
+  },
+  howItWorks: {
+    eyebrow: "Cómo funciona",
+    title: "Cuatro pasos serenos",
+    stepOneTitle: "Reserva tu momento",
+    stepOneBody: "Elige tu tratamiento y una hora que te venga bien.",
+    stepTwoTitle: "Prepara tu espacio",
+    stepTwoBody: "Crea un espacio cómodo y tranquilo en casa.",
+    stepThreeTitle: "Lo llevamos todo",
+    stepThreeBody: "Camilla, sábanas limpias, toalla y aceites de masaje incluidos.",
+    stepFourTitle: "Desconecta",
+    stepFourBody: "Tómate un momento para bajar el ritmo, respirar y reconectar contigo.",
+  },
   footer: {
     rights: "Todos los derechos reservados.",
     serviceArea: "Servicio en Lisboa y alrededores",

@@ -57,6 +57,45 @@ export const en = {
     empty: "The first reviews will appear here soon.",
     submitted: "Thank you — your review has been sent for review.",
   },
+  philosophy: {
+    eyebrow: "Brand philosophy",
+    title: "The soul behind Soul's Touch",
+    quote:
+      "A name that could hold peace, relaxation, connection and emotional well-being.",
+    bodyOne:
+      "Massage is not simply a luxury. It is a form of self-care, and a way of reconnecting with ourselves.",
+    bodyTwo:
+      "Soul's Touch exists to give people a moment to slow down, breathe and feel cared for.",
+  },
+  statement: {
+    lineOne: "A moment to slow down.",
+    lineTwo: "A moment to reconnect.",
+    support: "Your body deserves a moment of stillness.",
+  },
+  homeExperience: {
+    eyebrow: "Home massage",
+    titleLineOne: "Your space.",
+    titleLineTwo: "Your moment.",
+    body: "Soul's Touch brings the massage experience to you. Enjoy your treatment in the comfort and privacy of your own home, with no need to travel before or after your session.",
+    includesTitle: "The experience includes",
+    itemTable: "Massage table",
+    itemLinens: "Clean linens",
+    itemTowel: "Fresh towel",
+    itemOils: "Massage oils",
+    itemSetup: "Complete setup and pack-away",
+  },
+  howItWorks: {
+    eyebrow: "How it works",
+    title: "Four quiet steps",
+    stepOneTitle: "Book your moment",
+    stepOneBody: "Choose your treatment and a suitable appointment time.",
+    stepTwoTitle: "Prepare your space",
+    stepTwoBody: "Create a comfortable, quiet space at home.",
+    stepThreeTitle: "We bring everything",
+    stepThreeBody: "Your massage table, clean linens, towel and massage oils are provided.",
+    stepFourTitle: "Disconnect",
+    stepFourBody: "Take a moment to slow down, breathe and reconnect with yourself.",
+  },
   footer: {
     rights: "All rights reserved.",
     serviceArea: "Serving Lisbon and surrounding areas",
