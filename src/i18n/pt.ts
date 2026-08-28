@@ -60,6 +60,45 @@ export const pt: Dictionary = {
     empty: "Os primeiros testemunhos aparecerão aqui em breve.",
     submitted: "Obrigada — o seu testemunho foi enviado para aprovação.",
   },
+  philosophy: {
+    eyebrow: "Filosofia da marca",
+    title: "A alma por trás da Soul's Touch",
+    quote:
+      "Um nome capaz de transmitir paz, relaxamento, ligação e bem-estar emocional.",
+    bodyOne:
+      "A massagem não é apenas um luxo. É uma forma de cuidar de si e de reencontrar-se consigo mesmo.",
+    bodyTwo:
+      "A Soul's Touch existe para oferecer um momento para abrandar, respirar e sentir-se cuidado.",
+  },
+  statement: {
+    lineOne: "Um momento para abrandar.",
+    lineTwo: "Um momento para reconectar.",
+    support: "O seu corpo merece um momento de quietude.",
+  },
+  homeExperience: {
+    eyebrow: "Massagem ao domicílio",
+    titleLineOne: "O seu espaço.",
+    titleLineTwo: "O seu momento.",
+    body: "A Soul's Touch leva a experiência de massagem até si. Desfrute do tratamento no conforto e na privacidade da sua casa, sem precisar de se deslocar antes ou depois da sessão.",
+    includesTitle: "A experiência inclui",
+    itemTable: "Marquesa de massagem",
+    itemLinens: "Lençóis lavados",
+    itemTowel: "Toalha lavada",
+    itemOils: "Óleos de massagem",
+    itemSetup: "Montagem e recolha completas",
+  },
+  howItWorks: {
+    eyebrow: "Como funciona",
+    title: "Quatro passos serenos",
+    stepOneTitle: "Reserve o seu momento",
+    stepOneBody: "Escolha o tratamento e um horário conveniente.",
+    stepTwoTitle: "Prepare o seu espaço",
+    stepTwoBody: "Reserve um espaço confortável e tranquilo em casa.",
+    stepThreeTitle: "Levamos tudo",
+    stepThreeBody: "Marquesa, lençóis lavados, toalha e óleos de massagem são fornecidos.",
+    stepFourTitle: "Desligue-se",
+    stepFourBody: "Aproveite para abrandar, respirar e reencontrar-se consigo.",
+  },
   footer: {
     rights: "Todos os direitos reservados.",
     serviceArea: "Serviço em Lisboa e arredores",
