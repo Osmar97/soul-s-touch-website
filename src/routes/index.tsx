@@ -5,9 +5,12 @@ import { Footer } from "@/components/site/Footer";
 import { Section } from "@/components/site/Section";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { BookingCta } from "@/components/site/BookingCta";
+import { MobileBookingBar } from "@/components/site/MobileBookingBar";
 import { SECTIONS, SITE } from "@/config/site";
 import { useT } from "@/i18n";
 import { en } from "@/i18n/en";
+import heroImage from "@/assets/hero-massage.jpg";
+
 
 const TITLE = en.meta.title;
 const DESCRIPTION = en.meta.description;
@@ -94,14 +97,14 @@ function HomePage() {
               </div>
             </div>
 
-            <div className="rise-in relative order-first lg:order-none lg:h-[80vh]">
+            <div className="rise-in relative mt-4 lg:mt-0 lg:h-[80vh]">
               <img
                 src={heroImage}
                 alt={t.hero.imageAlt}
                 width={1024}
                 height={1408}
                 fetchPriority="high"
-                className="h-[52vh] w-full object-cover sm:h-[60vh] lg:h-full"
+                className="h-[46vh] w-full object-cover sm:h-[58vh] lg:h-full"
               />
               <span
                 aria-hidden="true"
@@ -163,6 +166,8 @@ function HomePage() {
       </main>
 
       <Footer />
+      <MobileBookingBar />
+
     </div>
   );
 }
