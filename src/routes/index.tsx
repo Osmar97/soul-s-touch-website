@@ -71,18 +71,17 @@ function HomePage() {
       <main id="main">
         <Hero />
 
+        <Philosophy />
 
-        <Section id={SECTIONS.about} labelledBy="about-heading">
-          <SectionHeading id="about-heading" eyebrow={t.hero.eyebrow} title={t.nav.about} />
+        <BrandStatement />
+
+        <HomeExperience />
+
+        <Section id={SECTIONS.services} tone="muted" labelledBy="services-heading">
+          <SectionHeading id="services-heading" title={t.nav.services} />
         </Section>
 
-        <Section id={SECTIONS.services} tone="ink" labelledBy="services-heading">
-          <SectionHeading id="services-heading" tone="onInk" title={t.nav.services} />
-        </Section>
-
-        <Section id={SECTIONS.howItWorks} labelledBy="how-heading">
-          <SectionHeading id="how-heading" title={t.nav.howItWorks} />
-        </Section>
+        <HowItWorks />
 
         <Section id={SECTIONS.reviews} tone="muted" labelledBy="reviews-heading">
           <SectionHeading
