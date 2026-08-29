@@ -18,6 +18,7 @@ export const SITE = {
 /** In-page section anchors — used by nav, footer and the page shell. */
 export const SECTIONS = {
   about: "about",
+  homeExperience: "home-experience",
   services: "services",
   howItWorks: "how-it-works",
   reviews: "reviews",
