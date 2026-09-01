@@ -100,7 +100,7 @@ export const es: Dictionary = {
     stepFourBody: "Tómate un momento para bajar el ritmo, respirar y reconectar contigo.",
   },
   services: {
-    eyebrow: "Los tratamientos",
+    eyebrow: "Menú de servicios",
     title: "Los tratamientos",
     intro: "Una selección cuidadosamente curada de tratamientos centrados en la relajación, diseñados para dar a tu cuerpo y a tu mente el tiempo que merecen.",
     signature: "Experiencia signature",

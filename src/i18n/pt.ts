@@ -100,7 +100,7 @@ export const pt: Dictionary = {
     stepFourBody: "Aproveite para abrandar, respirar e reencontrar-se consigo.",
   },
   services: {
-    eyebrow: "Os tratamentos",
+    eyebrow: "Menu de serviços",
     title: "Os tratamentos",
     intro: "Uma seleção cuidadosamente curada de tratamentos focados no relaxamento, criados para dar ao corpo e à mente o tempo que merecem.",
     signature: "Experiência signature",

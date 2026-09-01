@@ -97,7 +97,7 @@ export const en = {
     stepFourBody: "Take a moment to slow down, breathe and reconnect with yourself.",
   },
   services: {
-    eyebrow: "The treatments",
+    eyebrow: "Service menu",
     title: "The treatments",
     intro: "A carefully curated selection of relaxation-focused treatments, designed to give your body and mind the time they deserve.",
     signature: "Signature experience",
