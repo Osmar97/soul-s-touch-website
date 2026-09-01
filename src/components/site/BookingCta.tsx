@@ -1,4 +1,4 @@
-import { BOOKING_URL, isBookingConfigured } from "@/config/booking";
+import { buildBookingUrl, isBookingConfigured } from "@/config/booking";
 import { SECTIONS } from "@/config/site";
 import { useT } from "@/i18n";
 import { Button, ButtonLink, siteButtonVariants } from "./Button";
@@ -16,15 +16,23 @@ export function BookingCta({
   size = "md",
   className,
   label,
+  service,
   onNavigate,
-}: Variants & { className?: string; label?: string; onNavigate?: () => void }) {
+}: Variants & {
+  className?: string;
+  label?: string;
+  /** Optional service name to preselect on the Setmore booking page. */
+  service?: string;
+  onNavigate?: () => void;
+}) {
   const t = useT();
   const text = label ?? t.common.bookNow;
+  const href = buildBookingUrl(service);
 
-  if (isBookingConfigured && BOOKING_URL) {
+  if (isBookingConfigured && href) {
     return (
       <ButtonLink
-        href={BOOKING_URL}
+        href={href}
         target="_blank"
         rel="noopener noreferrer"
         variant={variant}

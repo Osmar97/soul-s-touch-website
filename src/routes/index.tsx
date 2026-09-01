@@ -11,6 +11,7 @@ import { Philosophy } from "@/components/site/Philosophy";
 import { BrandStatement } from "@/components/site/BrandStatement";
 import { HomeExperience } from "@/components/site/HomeExperience";
 import { HowItWorks } from "@/components/site/HowItWorks";
+import { Services } from "@/components/site/Services";
 import { SECTIONS, SITE } from "@/config/site";
 import { useT } from "@/i18n";
 import { en } from "@/i18n/en";
@@ -81,9 +82,7 @@ function HomePage() {
 
         <HomeExperience />
 
-        <Section id={SECTIONS.services} tone="muted" labelledBy="services-heading">
-          <SectionHeading id="services-heading" title={t.nav.services} />
-        </Section>
+        <Services />
 
         <HowItWorks />
 
