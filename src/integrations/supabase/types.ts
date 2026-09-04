@@ -19,6 +19,7 @@ export type Database = {
           author_name: string
           body: string
           city: string | null
+          contact_email: string | null
           created_at: string
           id: string
           language: string
@@ -30,6 +31,7 @@ export type Database = {
           author_name: string
           body: string
           city?: string | null
+          contact_email?: string | null
           created_at?: string
           id?: string
           language?: string
@@ -41,6 +43,7 @@ export type Database = {
           author_name?: string
           body?: string
           city?: string | null
+          contact_email?: string | null
           created_at?: string
           id?: string
           language?: string
