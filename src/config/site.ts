@@ -21,6 +21,7 @@ export const SECTIONS = {
   homeExperience: "home-experience",
   services: "services",
   howItWorks: "how-it-works",
+  clientExperience: "client-experience",
   reviews: "reviews",
   faq: "faq",
   booking: "booking",
