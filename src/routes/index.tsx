@@ -87,6 +87,8 @@ function HomePage() {
 
         <HowItWorks />
 
+        <ClientExperience />
+
         <Section id={SECTIONS.reviews} tone="muted" labelledBy="reviews-heading">
           <SectionHeading
             id="reviews-heading"
