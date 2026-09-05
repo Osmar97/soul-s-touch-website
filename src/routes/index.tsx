@@ -14,6 +14,8 @@ import { HowItWorks } from "@/components/site/HowItWorks";
 import { Services } from "@/components/site/Services";
 import { ClientExperience } from "@/components/site/ClientExperience";
 import { Reviews } from "@/components/site/Reviews";
+import { Faq } from "@/components/site/Faq";
+
 
 import { SECTIONS, SITE } from "@/config/site";
 import { useT } from "@/i18n";
@@ -93,10 +95,8 @@ function HomePage() {
 
         <Reviews />
 
+        <Faq />
 
-        <Section id={SECTIONS.faq} labelledBy="faq-heading">
-          <SectionHeading id="faq-heading" title={t.nav.faq} />
-        </Section>
 
         <Section id={SECTIONS.booking} tone="ink" labelledBy="booking-heading">
           <SectionHeading
