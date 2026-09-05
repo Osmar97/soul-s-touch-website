@@ -13,6 +13,8 @@ import { HomeExperience } from "@/components/site/HomeExperience";
 import { HowItWorks } from "@/components/site/HowItWorks";
 import { Services } from "@/components/site/Services";
 import { ClientExperience } from "@/components/site/ClientExperience";
+import { Reviews } from "@/components/site/Reviews";
+
 import { SECTIONS, SITE } from "@/config/site";
 import { useT } from "@/i18n";
 import { en } from "@/i18n/en";
@@ -89,13 +91,8 @@ function HomePage() {
 
         <ClientExperience />
 
-        <Section id={SECTIONS.reviews} tone="muted" labelledBy="reviews-heading">
-          <SectionHeading
-            id="reviews-heading"
-            eyebrow={t.reviews.eyebrow}
-            title={t.reviews.title}
-          />
-        </Section>
+        <Reviews />
+
 
         <Section id={SECTIONS.faq} labelledBy="faq-heading">
           <SectionHeading id="faq-heading" title={t.nav.faq} />
