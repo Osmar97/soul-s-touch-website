@@ -105,7 +105,16 @@ function AdminReviewsPage() {
                   >
                     Reject
                   </Button>
+                  <Button
+                    size="sm"
+                    variant="ghost"
+                    disabled={remove.isPending}
+                    onClick={() => remove.mutate(review.id)}
+                  >
+                    Delete
+                  </Button>
                 </div>
+
               </li>
             ))}
           </ul>
