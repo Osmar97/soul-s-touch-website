@@ -42,6 +42,15 @@ function AdminReviewsPage() {
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ["admin-reviews"] }),
   });
 
+  const remove = useMutation({
+    mutationFn: async (id: string) => {
+      const { error } = await supabase.from("reviews").delete().eq("id", id);
+      if (error) throw error;
+    },
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["admin-reviews"] }),
+  });
+
+
   return (
     <main className="min-h-screen bg-background px-5 py-16 md:px-12">
       <div className="mx-auto max-w-4xl">
@@ -96,7 +105,16 @@ function AdminReviewsPage() {
                   >
                     Reject
                   </Button>
+                  <Button
+                    size="sm"
+                    variant="ghost"
+                    disabled={remove.isPending}
+                    onClick={() => remove.mutate(review.id)}
+                  >
+                    Delete
+                  </Button>
                 </div>
+
               </li>
             ))}
           </ul>
