@@ -145,7 +145,7 @@ export function Services() {
                 <BookingCta
                   variant="outline"
                   label={t.services.book}
-                  service={treatment.name}
+                  
                   className="w-full sm:w-auto lg:w-full"
                 />
               </div>

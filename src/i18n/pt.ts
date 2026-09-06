@@ -48,11 +48,23 @@ export const pt: Dictionary = {
 
   booking: {
     eyebrow: "Reservas",
-    title: "Reserve a sua sessão",
+    title: "Reserve o seu momento",
     description:
-      "Escolha o horário que lhe for mais conveniente. As marcações são confirmadas diretamente com a Dani.",
-    cta: "Marcar sessão",
-    unavailable: "As marcações abrem em breve — contacte-nos para reservar.",
+      "Escolha o seu tratamento, encontre o horário que lhe convém e deixe a Soul's Touch ir até si.",
+    reassurance: "Massagem ao domicílio. Experiência personalizada. Tudo incluído.",
+    homeNote: "Todos os atendimentos são atualmente realizados no conforto da sua casa.",
+    cta: "Reserve o seu momento",
+    comingSoon: "Link de marcações disponível em breve.",
+    noticeLabel: "Aviso de marcação",
+    noticeBody: "As marcações online podem ser feitas até 7 horas antes da hora pretendida.",
+    cancellationLabel: "Cancelamento",
+    cancellationBody: "Atualmente, as marcações podem ser canceladas até 24 horas antes da hora agendada.",
+    paymentLabel: "Pagamento",
+    paymentBody: "O pagamento é feito após o tratamento por transferência bancária/Revolut, cartão ou dinheiro.",
+    contactTitle: "Não encontra um horário conveniente?",
+    contactBody:
+      "A disponibilidade online nem sempre reflete todos os horários possíveis. Se precisar de um horário fora do calendário online, contacte-nos diretamente e veremos o que podemos organizar.",
+    contactCta: "Contacte-nos",
   },
   reviews: {
     eyebrow: "Palavras de clientes",
