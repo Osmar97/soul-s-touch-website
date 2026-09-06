@@ -4,7 +4,7 @@ import { Navigation } from "@/components/site/Navigation";
 import { Footer } from "@/components/site/Footer";
 import { Section } from "@/components/site/Section";
 import { SectionHeading } from "@/components/site/SectionHeading";
-import { BookingCta } from "@/components/site/BookingCta";
+
 import { MobileBookingBar } from "@/components/site/MobileBookingBar";
 import { Hero } from "@/components/site/Hero";
 import { Philosophy } from "@/components/site/Philosophy";
@@ -15,6 +15,7 @@ import { Services } from "@/components/site/Services";
 import { ClientExperience } from "@/components/site/ClientExperience";
 import { Reviews } from "@/components/site/Reviews";
 import { Faq } from "@/components/site/Faq";
+import { Booking } from "@/components/site/Booking";
 
 
 import { SECTIONS, SITE } from "@/config/site";
@@ -98,19 +99,7 @@ function HomePage() {
         <Faq />
 
 
-        <Section id={SECTIONS.booking} tone="ink" labelledBy="booking-heading">
-          <SectionHeading
-            id="booking-heading"
-            tone="onInk"
-            align="center"
-            eyebrow={t.booking.eyebrow}
-            title={t.booking.title}
-            description={t.booking.description}
-          />
-          <div className="mt-12 flex justify-center">
-            <BookingCta variant="onInk" size="lg" label={t.booking.cta} />
-          </div>
-        </Section>
+        <Booking />
 
         <Section id={SECTIONS.contact} labelledBy="contact-heading">
           <SectionHeading id="contact-heading" title={t.nav.contact} />

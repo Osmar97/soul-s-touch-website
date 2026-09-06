@@ -45,11 +45,23 @@ export const en = {
 
   booking: {
     eyebrow: "Reservations",
-    title: "Reserve your session",
+    title: "Book your moment",
     description:
-      "Choose a time that suits you. Bookings are confirmed directly with Dani.",
-    cta: "Book a session",
-    unavailable: "Booking opens soon — please get in touch to reserve a time.",
+      "Choose your treatment, find a time that works for you, and let Soul's Touch come to you.",
+    reassurance: "Home massage. Personalised experience. Everything provided.",
+    homeNote: "All appointments are currently provided in the comfort of your own home.",
+    cta: "Book your moment",
+    comingSoon: "Booking link coming soon.",
+    noticeLabel: "Booking notice",
+    noticeBody: "Online appointments can be booked up to 7 hours before the desired appointment time.",
+    cancellationLabel: "Cancellation",
+    cancellationBody: "Appointments can currently be cancelled up to 24 hours before the scheduled time.",
+    paymentLabel: "Payment",
+    paymentBody: "Payment is made after your treatment by bank transfer/Revolut, card or cash.",
+    contactTitle: "Can't find a suitable time?",
+    contactBody:
+      "Online availability does not always reflect every possible appointment. If you need a time outside the online schedule, contact us directly and we will see what we can arrange.",
+    contactCta: "Contact us",
   },
   reviews: {
     eyebrow: "Words from clients",
