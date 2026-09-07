@@ -211,9 +211,22 @@ export const en = {
     q12: "What happens if I feel uncomfortable during the massage?",
     a12: "Your comfort is always a priority. You can ask us to change the pressure, temperature, position or technique at any time. You can also ask to stop the massage at any moment. Open communication helps us create the best possible experience for you.",
   },
+  contact: {
+    eyebrow: "Contact",
+    title: "Let's connect",
+    description: "Have a question before booking? We'd love to hear from you.",
+    phone: "Phone",
+    whatsapp: "WhatsApp",
+    email: "Email",
+    instagram: "Instagram",
+    whatsappCta: "Message on WhatsApp",
+    whatsappMessage: "Hello, I would like to know more about Soul's Touch and the massage treatments.",
+    homeTitle: "Massage, brought to you.",
+    homeBody: "Enjoy your treatment in the comfort and privacy of your own home.",
+  },
   footer: {
-    rights: "All rights reserved.",
-    serviceArea: "Serving Lisbon and surrounding areas",
+    navigation: "Navigation",
+    contact: "Contact",
   },
 };
 

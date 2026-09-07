@@ -214,8 +214,21 @@ export const pt: Dictionary = {
     q12: "E se me sentir desconfortável durante a massagem?",
     a12: "O seu conforto é sempre prioritário. Pode pedir-nos para alterar a pressão, temperatura, posição ou técnica em qualquer momento. Também pode pedir para parar a massagem a qualquer altura. Uma comunicação aberta ajuda-nos a criar a melhor experiência possível para si.",
   },
+  contact: {
+    eyebrow: "Contacto",
+    title: "Vamos conversar",
+    description: "Tem alguma questão antes de reservar? Teremos todo o gosto em ajudar.",
+    phone: "Telefone",
+    whatsapp: "WhatsApp",
+    email: "Email",
+    instagram: "Instagram",
+    whatsappCta: "Mensagem no WhatsApp",
+    whatsappMessage: "Olá, gostaria de saber mais sobre a Soul's Touch e os tratamentos de massagem.",
+    homeTitle: "Massagem, levada até si.",
+    homeBody: "Desfrute do seu tratamento no conforto e na privacidade da sua própria casa.",
+  },
   footer: {
-    rights: "Todos os direitos reservados.",
-    serviceArea: "Serviço em Lisboa e arredores",
+    navigation: "Navegação",
+    contact: "Contacto",
   },
 };
