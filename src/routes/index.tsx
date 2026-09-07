@@ -2,8 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { Navigation } from "@/components/site/Navigation";
 import { Footer } from "@/components/site/Footer";
-import { Section } from "@/components/site/Section";
-import { SectionHeading } from "@/components/site/SectionHeading";
 
 import { MobileBookingBar } from "@/components/site/MobileBookingBar";
 import { Hero } from "@/components/site/Hero";
@@ -16,10 +14,10 @@ import { ClientExperience } from "@/components/site/ClientExperience";
 import { Reviews } from "@/components/site/Reviews";
 import { Faq } from "@/components/site/Faq";
 import { Booking } from "@/components/site/Booking";
+import { Contact } from "@/components/site/Contact";
 
 
-import { SECTIONS, SITE } from "@/config/site";
-import { useT } from "@/i18n";
+import { SITE } from "@/config/site";
 import { en } from "@/i18n/en";
 
 
@@ -73,8 +71,6 @@ export const Route = createFileRoute("/")({
  * content that follows in the next implementation phase.
  */
 function HomePage() {
-  const t = useT();
-
   return (
     <div id="top" className="min-h-screen bg-background">
       <Navigation />
@@ -101,9 +97,7 @@ function HomePage() {
 
         <Booking />
 
-        <Section id={SECTIONS.contact} labelledBy="contact-heading">
-          <SectionHeading id="contact-heading" title={t.nav.contact} />
-        </Section>
+        <Contact />
       </main>
 
       <Footer />

@@ -214,8 +214,21 @@ export const es: Dictionary = {
     q12: "¿Qué pasa si me siento incómoda durante el masaje?",
     a12: "Tu comodidad es siempre prioritaria. Puedes pedirnos que cambiemos la presión, temperatura, posición o técnica en cualquier momento. También puedes pedir que paremos el masaje en cualquier momento. Una comunicación abierta nos ayuda a crear la mejor experiencia posible para ti.",
   },
+  contact: {
+    eyebrow: "Contacto",
+    title: "Hablemos",
+    description: "¿Tienes alguna pregunta antes de reservar? Nos encantará saber de ti.",
+    phone: "Teléfono",
+    whatsapp: "WhatsApp",
+    email: "Email",
+    instagram: "Instagram",
+    whatsappCta: "Mensaje por WhatsApp",
+    whatsappMessage: "Hola, me gustaría saber más sobre Soul's Touch y los tratamientos de masaje.",
+    homeTitle: "El masaje, llevado hasta ti.",
+    homeBody: "Disfruta de tu tratamiento en la comodidad y privacidad de tu propio hogar.",
+  },
   footer: {
-    rights: "Todos los derechos reservados.",
-    serviceArea: "Servicio en Lisboa y alrededores",
+    navigation: "Navegación",
+    contact: "Contacto",
   },
 };
