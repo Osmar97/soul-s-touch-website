@@ -4,7 +4,7 @@ import type { AnchorHTMLAttributes, ButtonHTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
 
 export const siteButtonVariants = cva(
-  "inline-flex items-center justify-center gap-2 rounded-none border text-[0.6875rem] uppercase tracking-[0.24em] transition-colors duration-300 disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex min-h-11 items-center justify-center gap-2 rounded-none border text-[0.6875rem] uppercase tracking-[0.24em] transition-colors duration-300 disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {

@@ -29,19 +29,20 @@ export function ReviewForm({
       return;
     }
     setStatus("sending");
-    const { error } = await supabase.from("reviews").insert({
-      author_name: name.trim().slice(0, 60),
-      rating,
-      body: body.trim().slice(0, 1200),
-      language: lang,
-      contact_email: email.trim() ? email.trim().slice(0, 160) : null,
-      status: "pending",
-    });
-    if (error) {
+    try {
+      const { error } = await supabase.from("reviews").insert({
+        author_name: name.trim().slice(0, 60),
+        rating,
+        body: body.trim().slice(0, 1200),
+        language: lang,
+        contact_email: email.trim() ? email.trim().slice(0, 160) : null,
+        status: "pending",
+      });
+      if (error) throw error;
+      onSubmitted();
+    } catch {
       setStatus("error");
-      return;
     }
-    onSubmitted();
   }
 
   return (
@@ -71,7 +72,7 @@ export function ReviewForm({
               aria-pressed={rating === n}
               aria-label={`${n} / 5`}
               className={cn(
-                "h-10 w-10 border text-sm transition-colors",
+                "h-11 w-11 border text-sm transition-colors",
                 n <= rating
                   ? "border-gold bg-gold/10 text-gold-deep"
                   : "border-border text-muted-foreground hover:border-gold/60",
@@ -115,31 +116,13 @@ export function ReviewForm({
       ) : null}
 
       <div className="mt-10 flex flex-wrap items-center gap-4">
-        <ButtonSubmit sending={status === "sending"} label={t.reviews.submit} sendingLabel={t.reviews.sending} />
+        <Button type="submit" variant="solid" disabled={status === "sending"}>
+          {status === "sending" ? t.reviews.sending : t.reviews.submit}
+        </Button>
         <Button variant="ghost" size="sm" onClick={onCancel}>
           {t.reviews.cancel}
         </Button>
       </div>
     </form>
-  );
-}
-
-function ButtonSubmit({
-  sending,
-  label,
-  sendingLabel,
-}: {
-  sending: boolean;
-  label: string;
-  sendingLabel: string;
-}) {
-  return (
-    <button
-      type="submit"
-      disabled={sending}
-      className="inline-flex items-center justify-center rounded-none border border-primary bg-primary px-7 py-3.5 text-[0.6875rem] uppercase tracking-[0.24em] text-primary-foreground transition-colors duration-300 hover:bg-ink disabled:pointer-events-none disabled:opacity-50"
-    >
-      {sending ? sendingLabel : label}
-    </button>
   );
 }

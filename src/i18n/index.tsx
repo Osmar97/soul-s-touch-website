@@ -30,10 +30,14 @@ export function I18nProvider({ children }: { children: ReactNode }) {
   const [lang, setLangState] = useState<Language>("en");
 
   useEffect(() => {
-    const stored = window.localStorage.getItem(STORAGE_KEY);
-    if (isLanguage(stored)) {
-      setLangState(stored);
-      return;
+    try {
+      const stored = window.localStorage.getItem(STORAGE_KEY);
+      if (isLanguage(stored)) {
+        setLangState(stored);
+        return;
+      }
+    } catch {
+      /* storage unavailable — fall back to the browser language */
     }
     const browser = window.navigator.language.slice(0, 2);
     if (isLanguage(browser)) setLangState(browser);

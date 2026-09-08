@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { Wordmark } from "./Wordmark";
@@ -15,6 +15,9 @@ export function Navigation() {
   const t = useT();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   const links = [
     { href: "#top", label: t.nav.home },
@@ -34,13 +37,33 @@ export function Navigation() {
   useEffect(() => {
     if (!open) return;
     const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setOpen(false);
+      if (event.key === "Escape") {
+        setOpen(false);
+        return;
+      }
+      if (event.key !== "Tab") return;
+      const focusable = mobileMenuRef.current?.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled])',
+      );
+      if (!focusable?.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (!first || !last) return;
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
     };
+    closeButtonRef.current?.focus();
     document.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
     return () => {
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = "";
+      menuButtonRef.current?.focus();
     };
   }, [open]);
 
@@ -76,7 +99,7 @@ export function Navigation() {
               <li key={link.label}>
                 <a
                   href={link.href}
-                  className="label-luxe relative text-muted-foreground transition-colors duration-300 after:absolute after:-bottom-2 after:left-0 after:h-px after:w-0 after:bg-gold after:transition-all after:duration-500 hover:text-foreground hover:after:w-full"
+                  className="label-luxe relative inline-flex min-h-11 items-center text-muted-foreground transition-colors duration-300 after:absolute after:bottom-1 after:left-0 after:h-px after:w-0 after:bg-gold after:transition-all after:duration-500 hover:text-foreground hover:after:w-full"
                 >
                   {link.label}
                 </a>
@@ -91,12 +114,13 @@ export function Navigation() {
         </div>
 
         <button
+          ref={menuButtonRef}
           type="button"
           onClick={() => setOpen(true)}
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={t.nav.open}
-          className="label-luxe flex cursor-pointer items-center gap-3 text-foreground lg:hidden"
+          className="label-luxe flex min-h-11 min-w-11 cursor-pointer items-center justify-end gap-3 text-foreground lg:hidden"
         >
           <span aria-hidden="true" className="flex h-2.5 w-6 flex-col justify-between">
             <span className="block h-px w-full bg-foreground" />
@@ -108,17 +132,22 @@ export function Navigation() {
 
       {/* Full-screen mobile overlay */}
       <div
+        ref={mobileMenuRef}
         id="mobile-menu"
+        role="dialog"
+        aria-modal="true"
+        aria-label={t.nav.menu}
         hidden={!open}
         className="fixed inset-0 z-50 flex flex-col bg-ink text-ink-foreground lg:hidden"
       >
         <div className="container-luxe flex h-24 items-center justify-between">
           <Wordmark tone="onInk" className="items-start" />
           <button
+            ref={closeButtonRef}
             type="button"
             onClick={() => setOpen(false)}
             aria-label={t.nav.close}
-            className="label-luxe cursor-pointer text-ink-foreground/70 transition-colors hover:text-gold"
+            className="label-luxe min-h-11 cursor-pointer text-ink-foreground/70 transition-colors hover:text-gold"
           >
             {t.nav.close}
           </button>

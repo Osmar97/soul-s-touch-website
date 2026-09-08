@@ -44,6 +44,7 @@ export const es: Dictionary = {
     language: "Idioma",
     loading: "Cargando",
     error: "Algo salió mal. Inténtalo de nuevo.",
+    tryAgain: "Intentar de nuevo",
   },
 
   booking: {

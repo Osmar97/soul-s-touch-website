@@ -144,8 +144,6 @@ export function Services() {
               <div className="mt-auto pt-10">
                 <BookingCta
                   variant="outline"
-                  label={t.services.book}
-                  
                   className="w-full sm:w-auto lg:w-full"
                 />
               </div>

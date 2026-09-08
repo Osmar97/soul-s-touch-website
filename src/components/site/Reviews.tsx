@@ -52,7 +52,20 @@ export function Reviews() {
         description={t.reviews.description}
       />
 
-      {hasReviews ? (
+      {reviews.isLoading ? (
+        <p role="status" className="mt-16 text-center text-sm text-muted-foreground">
+          {t.common.loading}
+        </p>
+      ) : reviews.isError ? (
+        <div className="mx-auto mt-16 max-w-xl border-y border-border py-12 text-center">
+          <p role="alert" className="text-sm text-muted-foreground">
+            {t.common.error}
+          </p>
+          <Button className="mt-7" variant="outline" onClick={() => reviews.refetch()}>
+            {t.common.tryAgain}
+          </Button>
+        </div>
+      ) : hasReviews ? (
         <>
           {/* Desktop: editorial grid */}
           <ul className="mt-16 hidden gap-x-14 gap-y-16 md:grid md:grid-cols-2 lg:grid-cols-3">
