@@ -28,7 +28,7 @@ export function Hero() {
             <BookingCta variant="solid" size="lg" />
             <a
               href={`#${SECTIONS.about}`}
-              className="label-luxe border-b border-gold/40 pb-1 text-foreground transition-colors duration-300 hover:border-gold hover:text-gold-deep"
+              className="label-luxe inline-flex min-h-11 items-center border-b border-gold/40 text-foreground transition-colors duration-300 hover:border-gold hover:text-gold-deep"
             >
               {t.hero.ctaSecondary}
             </a>

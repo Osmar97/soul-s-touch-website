@@ -21,8 +21,12 @@ import { SITE } from "@/config/site";
 import { en } from "@/i18n/en";
 
 
-const TITLE = en.meta.title;
-const DESCRIPTION = en.meta.description;
+const TITLE =
+  (import.meta.env["VITE_SITE_TITLE"] as string | undefined)?.trim() ||
+  "Soul's Touch by Dani | Home Massage";
+const DESCRIPTION =
+  (import.meta.env["VITE_SITE_DESCRIPTION"] as string | undefined)?.trim() ||
+  en.meta.description;
 
 export const Route = createFileRoute("/")({
   component: HomePage,
@@ -84,9 +88,9 @@ function HomePage() {
 
         <HomeExperience />
 
-        <Services />
-
         <HowItWorks />
+
+        <Services />
 
         <ClientExperience />
 

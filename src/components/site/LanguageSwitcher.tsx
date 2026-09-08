@@ -38,7 +38,7 @@ export function LanguageSwitcher({
               aria-current={active ? "true" : undefined}
               onClick={() => setLang(code)}
               className={cn(
-                "label-luxe cursor-pointer border-b py-0.5 transition-colors duration-300",
+                "label-luxe inline-flex min-h-11 min-w-11 cursor-pointer items-center justify-center border-b transition-colors duration-300",
                 active
                   ? "border-gold text-gold-deep"
                   : cn(

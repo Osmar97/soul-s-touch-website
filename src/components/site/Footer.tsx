@@ -39,7 +39,7 @@ export function Footer() {
 
   return (
     <footer className="border-t border-gold/30 bg-ink text-ink-foreground">
-      <div className="container-luxe py-14 md:py-18">
+      <div className="container-luxe pt-14 pb-28 md:py-18 lg:pb-18">
         <div className="grid gap-12 md:grid-cols-[1fr_auto_auto] md:gap-16 lg:gap-24">
           <Wordmark tone="onInk" className="items-start" />
 
@@ -50,7 +50,7 @@ export function Footer() {
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-xs text-ink-foreground/60 transition-colors duration-300 hover:text-gold-soft"
+                    className="inline-flex min-h-11 items-center text-xs text-ink-foreground/60 transition-colors duration-300 hover:text-gold-soft"
                   >
                     {link.label}
                   </a>
@@ -68,7 +68,7 @@ export function Footer() {
                     href={link.href}
                     target={link.external ? "_blank" : undefined}
                     rel={link.external ? "noopener noreferrer" : undefined}
-                    className="text-xs text-ink-foreground/60 transition-colors duration-300 hover:text-gold-soft"
+                    className="inline-flex min-h-11 items-center text-xs text-ink-foreground/60 transition-colors duration-300 hover:text-gold-soft"
                   >
                     {link.label}
                   </a>

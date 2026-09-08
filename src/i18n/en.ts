@@ -41,6 +41,7 @@ export const en = {
     language: "Language",
     loading: "Loading",
     error: "Something went wrong. Please try again.",
+    tryAgain: "Try again",
   },
 
   booking: {
