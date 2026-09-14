@@ -29,7 +29,9 @@ export function Contact() {
     instagramUrl
       ? {
           label: t.contact.instagram,
-          value: SITE.instagram.replace(/^https?:\/\/(www\.)?instagram\.com\//i, "@").replace(/\/$/, ""),
+          value: SITE.instagram
+            .replace(/^https?:\/\/(www\.)?instagram\.com\//i, "@")
+            .replace(/\/$/, ""),
           href: instagramUrl,
           external: true,
         }

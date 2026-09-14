@@ -46,10 +46,7 @@ export function Faq() {
           const answerId = `${baseId}-a-${index}`;
 
           return (
-            <div
-              key={questionId}
-              className="border-b border-hairline first:border-t"
-            >
+            <div key={questionId} className="border-b border-hairline first:border-t">
               <h3 className="font-sans text-base font-normal">
                 <button
                   type="button"
@@ -60,13 +57,13 @@ export function Faq() {
                   className={cn(
                     "group flex w-full items-center justify-between gap-4 py-5 text-left transition-colors",
                     "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gold focus-visible:ring-offset-4 focus-visible:ring-offset-background",
-                    "hover:text-gold-deep"
+                    "hover:text-gold-deep",
                   )}
                 >
                   <span
                     className={cn(
                       "pr-2 text-sm leading-snug tracking-wide transition-colors sm:text-base",
-                      isOpen ? "text-foreground" : "text-foreground/90"
+                      isOpen ? "text-foreground" : "text-foreground/90",
                     )}
                   >
                     {item.q}
@@ -79,7 +76,7 @@ export function Faq() {
                     <span
                       className={cn(
                         "absolute h-3 w-px bg-current transition-transform duration-300",
-                        isOpen && "rotate-90 scale-0"
+                        isOpen && "rotate-90 scale-0",
                       )}
                     />
                   </span>
@@ -89,9 +86,10 @@ export function Faq() {
                 id={answerId}
                 role="region"
                 aria-labelledby={questionId}
+                aria-hidden={!isOpen}
                 className={cn(
                   "grid transition-all duration-300 ease-out",
-                  isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                  isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0",
                 )}
               >
                 <div className="overflow-hidden">

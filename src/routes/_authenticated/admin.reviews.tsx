@@ -50,7 +50,6 @@ function AdminReviewsPage() {
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ["admin-reviews"] }),
   });
 
-
   return (
     <main className="min-h-screen bg-background px-5 py-16 md:px-12">
       <div className="mx-auto max-w-4xl">
@@ -114,7 +113,6 @@ function AdminReviewsPage() {
                     Delete
                   </Button>
                 </div>
-
               </li>
             ))}
           </ul>

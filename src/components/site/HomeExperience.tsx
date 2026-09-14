@@ -49,10 +49,7 @@ export function HomeExperience() {
                 key={item}
                 className="flex items-baseline gap-5 border-b border-gold/20 py-5 font-serif text-xl text-foreground sm:text-2xl"
               >
-                <span
-                  aria-hidden="true"
-                  className="mt-2 h-px w-6 shrink-0 bg-gold sm:w-8"
-                />
+                <span aria-hidden="true" className="mt-2 h-px w-6 shrink-0 bg-gold sm:w-8" />
                 <span className="min-w-0">{item}</span>
               </li>
             ))}

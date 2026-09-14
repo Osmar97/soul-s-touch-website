@@ -16,58 +16,61 @@ import { Faq } from "@/components/site/Faq";
 import { Booking } from "@/components/site/Booking";
 import { Contact } from "@/components/site/Contact";
 
-
 import { SITE } from "@/config/site";
 import { en } from "@/i18n/en";
-
 
 const TITLE =
   (import.meta.env["VITE_SITE_TITLE"] as string | undefined)?.trim() ||
   "Soul's Touch by Dani | Home Massage";
 const DESCRIPTION =
-  (import.meta.env["VITE_SITE_DESCRIPTION"] as string | undefined)?.trim() ||
-  en.meta.description;
+  (import.meta.env["VITE_SITE_DESCRIPTION"] as string | undefined)?.trim() || en.meta.description;
 
 export const Route = createFileRoute("/")({
   component: HomePage,
-  head: () => ({
-    meta: [
-      { title: TITLE },
-      { name: "description", content: DESCRIPTION },
-      { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESCRIPTION },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: "/" },
-      { property: "og:locale", content: "en" },
-      { property: "og:locale:alternate", content: "pt" },
-      { name: "twitter:title", content: TITLE },
-      { name: "twitter:description", content: DESCRIPTION },
-    ],
-    links: [{ rel: "canonical", href: "/" }],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "HealthAndBeautyBusiness",
-          name: SITE.fullName,
-          description: DESCRIPTION,
-          areaServed: { "@type": "City", name: SITE.city },
-          address: {
-            "@type": "PostalAddress",
-            addressLocality: SITE.city,
-            addressRegion: SITE.region,
-            addressCountry: SITE.country,
-          },
-          availableService: {
-            "@type": "Service",
-            serviceType: "Mobile massage therapy at home",
-            areaServed: SITE.serviceArea,
-          },
-        }),
-      },
-    ],
-  }),
+  head: () => {
+    const canonical = SITE.canonicalUrl || "/";
+    return {
+      meta: [
+        { title: TITLE },
+        { name: "description", content: DESCRIPTION },
+        { property: "og:site_name", content: SITE.fullName },
+        { property: "og:title", content: TITLE },
+        { property: "og:description", content: DESCRIPTION },
+        { property: "og:type", content: "website" },
+        { property: "og:url", content: canonical },
+        { property: "og:locale", content: "en" },
+        { property: "og:locale:alternate", content: "pt" },
+        { property: "og:locale:alternate", content: "es" },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: TITLE },
+        { name: "twitter:description", content: DESCRIPTION },
+      ],
+      links: [{ rel: "canonical", href: canonical }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "HealthAndBeautyBusiness",
+            name: SITE.fullName,
+            description: DESCRIPTION,
+            areaServed: { "@type": "City", name: SITE.city },
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: SITE.city,
+              addressRegion: SITE.region,
+              addressCountry: SITE.country,
+            },
+            availableService: {
+              "@type": "Service",
+              serviceType: "Mobile massage therapy at home",
+              areaServed: SITE.serviceArea,
+            },
+          }),
+        },
+      ],
+    };
+  },
 });
 
 /**
@@ -98,7 +101,6 @@ function HomePage() {
 
         <Faq />
 
-
         <Booking />
 
         <Contact />
@@ -106,7 +108,6 @@ function HomePage() {
 
       <Footer />
       <MobileBookingBar />
-
     </div>
   );
 }

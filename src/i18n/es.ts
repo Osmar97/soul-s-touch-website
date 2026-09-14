@@ -8,14 +8,14 @@ export const es: Dictionary = {
   },
   nav: {
     home: "Inicio",
-    experience: "Experiencia",
     about: "Sobre",
-    services: "Servicios",
+    experience: "Experiencia",
     howItWorks: "Cómo funciona",
+    services: "Tratamientos",
     reviews: "Opiniones",
     faq: "Preguntas",
     contact: "Contacto",
-    book: "Reservar",
+    book: "Reserva tu momento",
     menu: "Menú",
     close: "Cerrar menú",
     open: "Abrir menú",
@@ -36,7 +36,7 @@ export const es: Dictionary = {
     ctaSecondary: "Descubre la experiencia",
     scroll: "Desliza para explorar",
     imageAlt:
-      "Sala a la luz de las velas con camilla vestida de lino, toallas dobladas y aceite",
+      "Un espacio sereno y acogedor en casa preparado a la luz de las velas con camilla vestida de lino, toallas limpias y aceites de masaje",
   },
   common: {
     readMore: "Saber más",
@@ -59,9 +59,11 @@ export const es: Dictionary = {
     noticeLabel: "Aviso de reserva",
     noticeBody: "Las citas online pueden reservarse hasta 7 horas antes de la hora deseada.",
     cancellationLabel: "Cancelación",
-    cancellationBody: "Actualmente, las citas pueden cancelarse hasta 24 horas antes de la hora programada.",
+    cancellationBody:
+      "Actualmente, las citas pueden cancelarse hasta 24 horas antes de la hora programada.",
     paymentLabel: "Pago",
-    paymentBody: "El pago se realiza después del tratamiento por transferencia bancaria/Revolut, tarjeta o efectivo.",
+    paymentBody:
+      "El pago se realiza después del tratamiento por transferencia bancaria/Revolut, tarjeta o efectivo.",
     contactTitle: "¿No encuentras una hora adecuada?",
     contactBody:
       "La disponibilidad online no siempre refleja todas las citas posibles. Si necesitas una hora fuera del calendario online, contáctanos directamente y veremos qué podemos organizar.",
@@ -94,8 +96,7 @@ export const es: Dictionary = {
   philosophy: {
     eyebrow: "Filosofía de marca",
     title: "El alma detrás de Soul's Touch",
-    quote:
-      "Un nombre capaz de transmitir paz, relajación, conexión y bienestar emocional.",
+    quote: "Un nombre capaz de transmitir paz, relajación, conexión y bienestar emocional.",
     bodyOne:
       "El masaje no es solo un lujo. Es una forma de autocuidado y de reconectar con uno mismo.",
     bodyTwo:
@@ -133,13 +134,15 @@ export const es: Dictionary = {
   services: {
     eyebrow: "Menú de servicios",
     title: "Los tratamientos",
-    intro: "Una selección cuidadosamente curada de tratamientos centrados en la relajación, diseñados para dar a tu cuerpo y a tu mente el tiempo que merecen.",
+    intro:
+      "Una selección cuidadosamente curada de tratamientos centrados en la relajación, diseñados para dar a tu cuerpo y a tu mente el tiempo que merecen.",
     signature: "Experiencia signature",
     includesLabel: "Incluye",
-    book: "Reservar este tratamiento",
+    book: "Reserva tu momento",
     oneName: "Relajación cuerpo completo",
     oneTagline: "La experiencia completa de Soul's Touch.",
-    oneDescription: "Masaje de ritmo pausado que permite que tu cuerpo y tu mente se relajen por completo.",
+    oneDescription:
+      "Masaje de ritmo pausado que permite que tu cuerpo y tu mente se relajen por completo.",
     oneIncludes: "Espalda, Hombros, Cuello, Cabeza, Brazos, Manos, Piernas, Pies",
     twoName: "Masaje de espalda",
     twoTagline: "Libera la tensión. Recupera el equilibrio.",
@@ -165,10 +168,13 @@ export const es: Dictionary = {
     beforePlease: "Por favor:",
     beforeItem1: "Acude con el cuerpo y los pies limpios.",
     beforeItem2: "Evita perfumes fuertes o aceites corporales antes de tu cita.",
-    beforeItem3: "Evita una comida muy pesada inmediatamente antes de un masaje de cuerpo completo.",
+    beforeItem3:
+      "Evita una comida muy pesada inmediatamente antes de un masaje de cuerpo completo.",
     beforeItem4: "Evita el alcohol antes de tu cita.",
-    beforeItem5: "Informa a Dani sobre dolores, lesiones, zonas sensibles, alergias o problemas de salud relevantes.",
-    beforeItem6: "Menciona cualquier medicación o circunstancia que pueda afectar la seguridad o comodidad del masaje.",
+    beforeItem5:
+      "Informa a Dani sobre dolores, lesiones, zonas sensibles, alergias o problemas de salud relevantes.",
+    beforeItem6:
+      "Menciona cualquier medicación o circunstancia que pueda afectar la seguridad o comodidad del masaje.",
     beforeItem7: "Mantén el teléfono en silencio durante la sesión.",
     duringTitle: "Tu comodidad es lo primero",
     duringIntro:

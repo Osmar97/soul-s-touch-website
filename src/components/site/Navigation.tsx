@@ -21,10 +21,12 @@ export function Navigation() {
 
   const links = [
     { href: "#top", label: t.nav.home },
-    { href: `#${SECTIONS.about}`, label: t.nav.experience },
+    { href: `#${SECTIONS.about}`, label: t.nav.about },
+    { href: `#${SECTIONS.homeExperience}`, label: t.nav.experience },
     { href: `#${SECTIONS.services}`, label: t.nav.services },
     { href: `#${SECTIONS.reviews}`, label: t.nav.reviews },
     { href: `#${SECTIONS.faq}`, label: t.nav.faq },
+    { href: `#${SECTIONS.contact}`, label: t.nav.contact },
   ];
 
   useEffect(() => {
@@ -36,6 +38,7 @@ export function Navigation() {
 
   useEffect(() => {
     if (!open) return;
+    const trigger = menuButtonRef.current;
     const onKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setOpen(false);
@@ -43,7 +46,7 @@ export function Navigation() {
       }
       if (event.key !== "Tab") return;
       const focusable = mobileMenuRef.current?.querySelectorAll<HTMLElement>(
-        'a[href], button:not([disabled])',
+        "a[href], button:not([disabled])",
       );
       if (!focusable?.length) return;
       const first = focusable[0];
@@ -63,7 +66,7 @@ export function Navigation() {
     return () => {
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = "";
-      menuButtonRef.current?.focus();
+      trigger?.focus();
     };
   }, [open]);
 
@@ -138,9 +141,9 @@ export function Navigation() {
         aria-modal="true"
         aria-label={t.nav.menu}
         hidden={!open}
-        className="fixed inset-0 z-50 flex flex-col bg-ink text-ink-foreground lg:hidden"
+        className="fixed inset-0 z-50 flex flex-col overflow-y-auto bg-ink text-ink-foreground lg:hidden"
       >
-        <div className="container-luxe flex h-24 items-center justify-between">
+        <div className="container-luxe flex h-24 shrink-0 items-center justify-between">
           <Wordmark tone="onInk" className="items-start" />
           <button
             ref={closeButtonRef}
@@ -155,7 +158,7 @@ export function Navigation() {
 
         <nav
           aria-label="Primary mobile"
-          className="container-luxe flex flex-1 flex-col justify-center"
+          className="container-luxe my-auto flex flex-col justify-center py-8"
         >
           <ul className="flex flex-col gap-1">
             {[...links, { href: `#${SECTIONS.booking}`, label: t.nav.book }].map((link) => (
@@ -172,7 +175,7 @@ export function Navigation() {
           </ul>
         </nav>
 
-        <div className="container-luxe flex items-center justify-between gap-4 pb-12">
+        <div className="container-luxe flex shrink-0 items-center justify-between gap-4 pb-12 pb-[calc(3rem+env(safe-area-inset-bottom))]">
           <LanguageSwitcher tone="onInk" />
           <BookingCta variant="onInk" size="sm" onNavigate={() => setOpen(false)} />
         </div>

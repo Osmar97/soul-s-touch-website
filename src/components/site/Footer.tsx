@@ -15,26 +15,26 @@ export function Footer() {
 
   const links = [
     { href: "#top", label: t.nav.home },
-    { href: `#${SECTIONS.about}`, label: t.nav.experience },
+    { href: `#${SECTIONS.about}`, label: t.nav.about },
+    { href: `#${SECTIONS.homeExperience}`, label: t.nav.experience },
     { href: `#${SECTIONS.services}`, label: t.nav.services },
     { href: `#${SECTIONS.reviews}`, label: t.nav.reviews },
     { href: `#${SECTIONS.faq}`, label: t.nav.faq },
     { href: `#${SECTIONS.booking}`, label: t.nav.book },
+    { href: `#${SECTIONS.contact}`, label: t.nav.contact },
   ];
 
   const contactLinks = [
     SITE.phone
-      ? { href: `tel:${SITE.phone.replace(/[^\d+]/g, "")}`, label: t.contact.phone, external: false }
+      ? {
+          href: `tel:${SITE.phone.replace(/[^\d+]/g, "")}`,
+          label: t.contact.phone,
+          external: false,
+        }
       : null,
-    whatsappUrl
-      ? { href: whatsappUrl, label: t.contact.whatsapp, external: true }
-      : null,
-    SITE.email
-      ? { href: `mailto:${SITE.email}`, label: t.contact.email, external: false }
-      : null,
-    instagramUrl
-      ? { href: instagramUrl, label: t.contact.instagram, external: true }
-      : null,
+    whatsappUrl ? { href: whatsappUrl, label: t.contact.whatsapp, external: true } : null,
+    SITE.email ? { href: `mailto:${SITE.email}`, label: t.contact.email, external: false } : null,
+    instagramUrl ? { href: instagramUrl, label: t.contact.instagram, external: true } : null,
   ].filter((item): item is NonNullable<typeof item> => item !== null);
 
   return (

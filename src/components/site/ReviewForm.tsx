@@ -18,6 +18,9 @@ export function ReviewForm({
   const [body, setBody] = useState("");
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "error" | "invalid">("idle");
+  const nameId = "review-form-author";
+  const bodyId = "review-form-body";
+  const emailId = "review-form-email";
 
   const fieldClass =
     "mt-3 w-full rounded-none border border-border bg-transparent px-4 py-3 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-gold";
@@ -50,16 +53,19 @@ export function ReviewForm({
       <p className="label-luxe text-gold-deep">{t.reviews.formTitle}</p>
       <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{t.reviews.formIntro}</p>
 
-      <label className="mt-9 block">
-        <span className="label-luxe text-muted-foreground">{t.reviews.fieldName}</span>
+      <div className="mt-9">
+        <label htmlFor={nameId} className="label-luxe text-muted-foreground">
+          {t.reviews.fieldName}
+        </label>
         <input
+          id={nameId}
           className={fieldClass}
           value={name}
           onChange={(e) => setName(e.target.value)}
           maxLength={60}
           required
         />
-      </label>
+      </div>
 
       <fieldset className="mt-8">
         <legend className="label-luxe text-muted-foreground">{t.reviews.fieldRating}</legend>
@@ -70,7 +76,7 @@ export function ReviewForm({
               type="button"
               onClick={() => setRating(n)}
               aria-pressed={rating === n}
-              aria-label={`${n} / 5`}
+              aria-label={`${n} ${t.reviews.ratingLabel}`}
               className={cn(
                 "h-11 w-11 border text-sm transition-colors",
                 n <= rating
@@ -84,20 +90,26 @@ export function ReviewForm({
         </div>
       </fieldset>
 
-      <label className="mt-8 block">
-        <span className="label-luxe text-muted-foreground">{t.reviews.fieldBody}</span>
+      <div className="mt-8">
+        <label htmlFor={bodyId} className="label-luxe text-muted-foreground">
+          {t.reviews.fieldBody}
+        </label>
         <textarea
+          id={bodyId}
           className={cn(fieldClass, "min-h-32 resize-y leading-relaxed")}
           value={body}
           onChange={(e) => setBody(e.target.value)}
           maxLength={1200}
           required
         />
-      </label>
+      </div>
 
-      <label className="mt-8 block">
-        <span className="label-luxe text-muted-foreground">{t.reviews.fieldEmail}</span>
+      <div className="mt-8">
+        <label htmlFor={emailId} className="label-luxe text-muted-foreground">
+          {t.reviews.fieldEmail}
+        </label>
         <input
+          id={emailId}
           type="email"
           className={fieldClass}
           value={email}
@@ -107,7 +119,7 @@ export function ReviewForm({
         <span className="mt-2 block text-xs text-muted-foreground/80">
           {t.reviews.fieldEmailHint}
         </span>
-      </label>
+      </div>
 
       {status === "invalid" || status === "error" ? (
         <p role="alert" className="mt-6 text-sm text-destructive">

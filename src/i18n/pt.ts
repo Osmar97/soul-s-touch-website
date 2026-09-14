@@ -8,14 +8,14 @@ export const pt: Dictionary = {
   },
   nav: {
     home: "Início",
-    experience: "Experiência",
     about: "Sobre",
-    services: "Serviços",
+    experience: "Experiência",
     howItWorks: "Como funciona",
+    services: "Tratamentos",
     reviews: "Testemunhos",
     faq: "Perguntas",
     contact: "Contacto",
-    book: "Marcar",
+    book: "Reserve o seu momento",
     menu: "Menu",
     close: "Fechar menu",
     open: "Abrir menu",
@@ -36,7 +36,7 @@ export const pt: Dictionary = {
     ctaSecondary: "Conhecer a experiência",
     scroll: "Deslize para explorar",
     imageAlt:
-      "Sala à luz de velas com marquesa vestida de linho, toalhas dobradas e óleo",
+      "Um espaço sereno e acolhedor em casa preparado à luz de velas com marquesa vestida de linho, toalhas lavadas e óleos de massagem",
   },
   common: {
     readMore: "Saber mais",
@@ -59,9 +59,11 @@ export const pt: Dictionary = {
     noticeLabel: "Aviso de marcação",
     noticeBody: "As marcações online podem ser feitas até 7 horas antes da hora pretendida.",
     cancellationLabel: "Cancelamento",
-    cancellationBody: "Atualmente, as marcações podem ser canceladas até 24 horas antes da hora agendada.",
+    cancellationBody:
+      "Atualmente, as marcações podem ser canceladas até 24 horas antes da hora agendada.",
     paymentLabel: "Pagamento",
-    paymentBody: "O pagamento é feito após o tratamento por transferência bancária/Revolut, cartão ou dinheiro.",
+    paymentBody:
+      "O pagamento é feito após o tratamento por transferência bancária/Revolut, cartão ou dinheiro.",
     contactTitle: "Não encontra um horário conveniente?",
     contactBody:
       "A disponibilidade online nem sempre reflete todos os horários possíveis. Se precisar de um horário fora do calendário online, contacte-nos diretamente e veremos o que podemos organizar.",
@@ -94,8 +96,7 @@ export const pt: Dictionary = {
   philosophy: {
     eyebrow: "Filosofia da marca",
     title: "A alma por trás da Soul's Touch",
-    quote:
-      "Um nome capaz de transmitir paz, relaxamento, ligação e bem-estar emocional.",
+    quote: "Um nome capaz de transmitir paz, relaxamento, ligação e bem-estar emocional.",
     bodyOne:
       "A massagem não é apenas um luxo. É uma forma de cuidar de si e de reencontrar-se consigo mesmo.",
     bodyTwo:
@@ -133,10 +134,11 @@ export const pt: Dictionary = {
   services: {
     eyebrow: "Menu de serviços",
     title: "Os tratamentos",
-    intro: "Uma seleção cuidadosamente curada de tratamentos focados no relaxamento, criados para dar ao corpo e à mente o tempo que merecem.",
+    intro:
+      "Uma seleção cuidadosamente curada de tratamentos focados no relaxamento, criados para dar ao corpo e à mente o tempo que merecem.",
     signature: "Experiência signature",
     includesLabel: "Inclui",
-    book: "Reservar este tratamento",
+    book: "Reserve o seu momento",
     oneName: "Relaxamento corpo inteiro",
     oneTagline: "A experiência completa Soul's Touch.",
     oneDescription: "Massagem de ritmo lento que permite ao corpo e à mente relaxar por completo.",
@@ -165,10 +167,13 @@ export const pt: Dictionary = {
     beforePlease: "Por favor:",
     beforeItem1: "Venha com o corpo e os pés limpos.",
     beforeItem2: "Evite perfumes fortes ou óleos corporais antes da sua sessão.",
-    beforeItem3: "Evite uma refeição muito pesada imediatamente antes de uma massagem de corpo inteiro.",
+    beforeItem3:
+      "Evite uma refeição muito pesada imediatamente antes de uma massagem de corpo inteiro.",
     beforeItem4: "Evite álcool antes da sua sessão.",
-    beforeItem5: "Informe a Dani sobre dores, lesões, zonas sensíveis, alergias ou problemas de saúde relevantes.",
-    beforeItem6: "Mencione qualquer medicação ou circunstância que possa afetar a segurança ou o conforto da massagem.",
+    beforeItem5:
+      "Informe a Dani sobre dores, lesões, zonas sensíveis, alergias ou problemas de saúde relevantes.",
+    beforeItem6:
+      "Mencione qualquer medicação ou circunstância que possa afetar a segurança ou o conforto da massagem.",
     beforeItem7: "Mantenha o telefone em silêncio durante a sessão.",
     duringTitle: "O seu conforto é prioritário",
     duringIntro:
@@ -224,7 +229,8 @@ export const pt: Dictionary = {
     email: "Email",
     instagram: "Instagram",
     whatsappCta: "Mensagem no WhatsApp",
-    whatsappMessage: "Olá, gostaria de saber mais sobre a Soul's Touch e os tratamentos de massagem.",
+    whatsappMessage:
+      "Olá, gostaria de saber mais sobre a Soul's Touch e os tratamentos de massagem.",
     homeTitle: "Massagem, levada até si.",
     homeBody: "Desfrute do seu tratamento no conforto e na privacidade da sua própria casa.",
   },

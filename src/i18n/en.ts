@@ -6,14 +6,14 @@ export const en = {
   },
   nav: {
     home: "Home",
-    experience: "Experience",
     about: "About",
-    services: "Services",
+    experience: "Experience",
     howItWorks: "How it works",
+    services: "Treatments",
     reviews: "Reviews",
     faq: "FAQ",
     contact: "Contact",
-    book: "Book",
+    book: "Book your moment",
     menu: "Menu",
     close: "Close menu",
     open: "Open menu",
@@ -33,7 +33,8 @@ export const en = {
       "Massage designed to help you reconnect with your body, quiet your mind and simply take a moment for yourself.",
     ctaSecondary: "Explore the experience",
     scroll: "Scroll to explore",
-    imageAlt: "A candlelit room prepared with a linen-draped massage table, folded towels and oil",
+    imageAlt:
+      "A serene home massage setting prepared with a linen-draped table, soft candlelight, fresh towels and organic oils",
   },
   common: {
     readMore: "Read more",
@@ -54,9 +55,11 @@ export const en = {
     cta: "Book your moment",
     comingSoon: "Booking link coming soon.",
     noticeLabel: "Booking notice",
-    noticeBody: "Online appointments can be booked up to 7 hours before the desired appointment time.",
+    noticeBody:
+      "Online appointments can be booked up to 7 hours before the desired appointment time.",
     cancellationLabel: "Cancellation",
-    cancellationBody: "Appointments can currently be cancelled up to 24 hours before the scheduled time.",
+    cancellationBody:
+      "Appointments can currently be cancelled up to 24 hours before the scheduled time.",
     paymentLabel: "Payment",
     paymentBody: "Payment is made after your treatment by bank transfer/Revolut, card or cash.",
     contactTitle: "Can't find a suitable time?",
@@ -91,8 +94,7 @@ export const en = {
   philosophy: {
     eyebrow: "Brand philosophy",
     title: "The soul behind Soul's Touch",
-    quote:
-      "A name that could hold peace, relaxation, connection and emotional well-being.",
+    quote: "A name that could hold peace, relaxation, connection and emotional well-being.",
     bodyOne:
       "Massage is not simply a luxury. It is a form of self-care, and a way of reconnecting with ourselves.",
     bodyTwo:
@@ -130,10 +132,11 @@ export const en = {
   services: {
     eyebrow: "Service menu",
     title: "The treatments",
-    intro: "A carefully curated selection of relaxation-focused treatments, designed to give your body and mind the time they deserve.",
+    intro:
+      "A carefully curated selection of relaxation-focused treatments, designed to give your body and mind the time they deserve.",
     signature: "Signature experience",
     includesLabel: "Includes",
-    book: "Book this treatment",
+    book: "Book your moment",
     oneName: "Full body relaxation",
     oneTagline: "The complete Soul's Touch experience.",
     oneDescription: "Slow-paced massage allowing your body and mind to fully relax.",
@@ -164,8 +167,10 @@ export const en = {
     beforeItem2: "Avoid strong perfumes or body oils before your appointment.",
     beforeItem3: "Avoid a very heavy meal immediately before a full-body massage.",
     beforeItem4: "Avoid alcohol before your appointment.",
-    beforeItem5: "Inform Dani about relevant pain, injuries, sensitive areas, allergies or health concerns.",
-    beforeItem6: "Mention any medication or circumstances that may affect the safety or comfort of the massage.",
+    beforeItem5:
+      "Inform Dani about relevant pain, injuries, sensitive areas, allergies or health concerns.",
+    beforeItem6:
+      "Mention any medication or circumstances that may affect the safety or comfort of the massage.",
     beforeItem7: "Keep your phone on silent during the session.",
     duringTitle: "Your comfort comes first",
     duringIntro:
@@ -221,7 +226,8 @@ export const en = {
     email: "Email",
     instagram: "Instagram",
     whatsappCta: "Message on WhatsApp",
-    whatsappMessage: "Hello, I would like to know more about Soul's Touch and the massage treatments.",
+    whatsappMessage:
+      "Hello, I would like to know more about Soul's Touch and the massage treatments.",
     homeTitle: "Massage, brought to you.",
     homeBody: "Enjoy your treatment in the comfort and privacy of your own home.",
   },

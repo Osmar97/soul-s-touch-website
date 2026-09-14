@@ -142,10 +142,7 @@ export function Services() {
               ) : null}
 
               <div className="mt-auto pt-10">
-                <BookingCta
-                  variant="outline"
-                  className="w-full sm:w-auto lg:w-full"
-                />
+                <BookingCta variant="outline" className="w-full sm:w-auto lg:w-full" />
               </div>
             </li>
           ))}
@@ -155,9 +152,7 @@ export function Services() {
           <div className="grid gap-8 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)] lg:gap-16">
             <div>
               <h3 className="label-luxe text-foreground">{t.addOns.title}</h3>
-              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                {t.addOns.intro}
-              </p>
+              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{t.addOns.intro}</p>
             </div>
             <ul className="text-sm">
               {addOns.map((addOn) => (

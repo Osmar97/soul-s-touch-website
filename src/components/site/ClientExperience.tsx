@@ -66,10 +66,7 @@ export function ClientExperience() {
                   key={item}
                   className="flex items-start gap-4 border-b border-gold/20 py-4 text-sm leading-relaxed text-muted-foreground"
                 >
-                  <span
-                    aria-hidden="true"
-                    className="mt-2 h-px w-4 shrink-0 bg-gold"
-                  />
+                  <span aria-hidden="true" className="mt-2 h-px w-4 shrink-0 bg-gold" />
                   <span>{item}</span>
                 </li>
               ))}
@@ -86,13 +83,8 @@ export function ClientExperience() {
             </p>
             <dl className="mt-8 grid gap-6">
               {highlights.map((highlight) => (
-                <div
-                  key={highlight.title}
-                  className="border-l border-gold/40 pl-5"
-                >
-                  <dt className="label-luxe text-foreground">
-                    {highlight.title}
-                  </dt>
+                <div key={highlight.title} className="border-l border-gold/40 pl-5">
+                  <dt className="label-luxe text-foreground">{highlight.title}</dt>
                   <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">
                     {highlight.body}
                   </dd>
@@ -115,9 +107,7 @@ export function ClientExperience() {
             </div>
 
             <div className="bg-muted/50 px-6 py-8 md:px-8">
-              <h4 className="label-luxe text-foreground">
-                {t.clientExperience.privacyTitle}
-              </h4>
+              <h3 className="label-luxe text-foreground">{t.clientExperience.privacyTitle}</h3>
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
                 {t.clientExperience.privacyBody}
               </p>

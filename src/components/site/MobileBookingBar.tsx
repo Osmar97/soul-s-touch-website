@@ -20,7 +20,7 @@ export function MobileBookingBar() {
   return (
     <div
       className={cn(
-        "fixed inset-x-0 bottom-0 z-40 border-t border-gold/20 bg-background/90 px-5 py-3 backdrop-blur-md transition-all duration-500 lg:hidden",
+        "fixed inset-x-0 bottom-0 z-40 border-t border-gold/20 bg-background/90 px-5 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] backdrop-blur-md transition-all duration-500 lg:hidden",
         visible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-full opacity-0",
       )}
     >

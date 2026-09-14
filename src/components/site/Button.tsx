@@ -15,9 +15,9 @@ export const siteButtonVariants = cva(
           "border-gold/50 bg-transparent text-ink-foreground hover:border-gold hover:bg-gold/15",
       },
       size: {
-        sm: "px-5 py-2.5",
-        md: "px-7 py-3.5",
-        lg: "px-9 py-4",
+        sm: "px-4 py-2.5 sm:px-5",
+        md: "px-5 py-3 sm:px-7 sm:py-3.5",
+        lg: "px-6 py-3.5 sm:px-9 sm:py-4",
       },
     },
     defaultVariants: { variant: "outline", size: "md" },

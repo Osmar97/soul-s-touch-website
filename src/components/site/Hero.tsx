@@ -13,7 +13,7 @@ export function Hero() {
         <div className="rise-in max-w-xl">
           <span className="label-luxe text-gold-deep">{t.hero.eyebrow}</span>
 
-          <h1 className="mt-8 font-serif text-[2.6rem] leading-[1.05] text-foreground sm:text-6xl lg:text-[4.25rem]">
+          <h1 className="mt-8 font-serif text-[2.25rem] leading-[1.08] text-foreground sm:text-5xl md:text-6xl lg:text-[4.25rem]">
             <span className="block">{t.hero.titleLineOne}</span>
             <span className="mt-2 block text-muted-foreground">{t.hero.titleLineTwo}</span>
           </h1>
@@ -42,7 +42,7 @@ export function Hero() {
             width={1024}
             height={1408}
             fetchPriority="high"
-            className="h-[46vh] w-full object-cover sm:h-[58vh] lg:h-full"
+            className="aspect-[1024/1408] h-[46vh] w-full object-cover sm:h-[58vh] lg:h-full"
           />
           <span
             aria-hidden="true"
