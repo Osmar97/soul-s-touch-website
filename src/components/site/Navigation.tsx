@@ -21,16 +21,15 @@ export function Navigation() {
 
   const links = [
     { href: "#top", label: t.nav.home },
-    { href: `#${SECTIONS.about}`, label: t.nav.about },
     { href: `#${SECTIONS.homeExperience}`, label: t.nav.experience },
     { href: `#${SECTIONS.services}`, label: t.nav.services },
-    { href: `#${SECTIONS.reviews}`, label: t.nav.reviews },
+    { href: `#${SECTIONS.clientExperience}`, label: t.nav.guidelines },
     { href: `#${SECTIONS.faq}`, label: t.nav.faq },
-    { href: `#${SECTIONS.contact}`, label: t.nav.contact },
+    { href: `#${SECTIONS.reviews}`, label: t.nav.reviews },
   ];
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 32);
+    const onScroll = () => setScrolled(window.scrollY > 40);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -75,7 +74,7 @@ export function Navigation() {
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-700 ease-out",
         scrolled
-          ? "border-b border-gold/15 bg-background/85 backdrop-blur-md"
+          ? "border-b border-gold/15 bg-background/90 backdrop-blur-md shadow-sm"
           : "border-b border-transparent bg-transparent",
       )}
     >
@@ -89,20 +88,25 @@ export function Navigation() {
       <div
         className={cn(
           "container-luxe flex items-center justify-between gap-8 transition-all duration-700 ease-out",
-          scrolled ? "h-16" : "h-24",
+          scrolled ? "h-16 lg:h-20" : "h-20 lg:h-28",
         )}
       >
         <a href="#top" aria-label={`${t.brand.name} ${t.brand.by}`} className="shrink-0">
-          <Wordmark className="items-start" />
+          <Wordmark tone={scrolled ? "default" : "onInk"} className="items-start" />
         </a>
 
         <nav aria-label="Primary" className="hidden lg:block">
-          <ul className="flex items-center gap-10 xl:gap-14">
+          <ul className="flex items-center gap-8 xl:gap-11">
             {links.map((link) => (
               <li key={link.label}>
                 <a
                   href={link.href}
-                  className="label-luxe relative inline-flex min-h-11 items-center text-muted-foreground transition-colors duration-300 after:absolute after:bottom-1 after:left-0 after:h-px after:w-0 after:bg-gold after:transition-all after:duration-500 hover:text-foreground hover:after:w-full"
+                  className={cn(
+                    "label-luxe relative inline-flex min-h-11 items-center transition-all duration-300 after:absolute after:bottom-1 after:left-0 after:h-px after:w-0 after:bg-gold after:transition-all after:duration-300 hover:after:w-full",
+                    scrolled
+                      ? "text-muted-foreground hover:text-foreground"
+                      : "text-white/80 hover:text-white hover:opacity-100",
+                  )}
                 >
                   {link.label}
                 </a>
@@ -111,9 +115,17 @@ export function Navigation() {
           </ul>
         </nav>
 
-        <div className="hidden items-center gap-8 lg:flex">
-          <LanguageSwitcher />
-          <BookingCta size="sm" />
+        <div className="hidden items-center gap-6 xl:gap-8 lg:flex">
+          <LanguageSwitcher tone={scrolled ? "default" : "onInk"} />
+          <BookingCta
+            variant={scrolled ? "outline" : "onInk"}
+            size="sm"
+            label={t.common.bookNow}
+            className={cn(
+              "rounded-none border-gold/60 text-[0.6875rem] uppercase tracking-[0.24em] transition-all duration-300",
+              !scrolled && "border-gold/60 text-white/95 hover:border-gold hover:bg-gold/15 hover:text-white",
+            )}
+          />
         </div>
 
         <button
@@ -123,11 +135,24 @@ export function Navigation() {
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={t.nav.open}
-          className="label-luxe flex min-h-11 min-w-11 cursor-pointer items-center justify-end gap-3 text-foreground lg:hidden"
+          className={cn(
+            "label-luxe flex min-h-11 min-w-11 cursor-pointer items-center justify-end gap-3 transition-colors duration-300 lg:hidden",
+            scrolled ? "text-foreground" : "text-white",
+          )}
         >
           <span aria-hidden="true" className="flex h-2.5 w-6 flex-col justify-between">
-            <span className="block h-px w-full bg-foreground" />
-            <span className="block h-px w-4/5 bg-foreground" />
+            <span
+              className={cn(
+                "block h-px w-full transition-colors duration-300",
+                scrolled ? "bg-foreground" : "bg-white",
+              )}
+            />
+            <span
+              className={cn(
+                "block h-px w-4/5 transition-colors duration-300",
+                scrolled ? "bg-foreground" : "bg-white",
+              )}
+            />
           </span>
           <span className="sr-only sm:not-sr-only">{t.nav.menu}</span>
         </button>

@@ -261,3 +261,20 @@
   background: var(--color-gold);
   animation: scroll-hint 3.2s ease-in-out infinite;
 }
+
+/* Subtle background scale on load: 1.03 -> 1.00 */
+@keyframes hero-scale {
+  from {
+    transform: scale(1.03);
+    opacity: 0.85;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@utility animate-hero-scale {
+  animation: hero-scale 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+

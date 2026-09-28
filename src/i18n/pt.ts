@@ -12,6 +12,7 @@ export const pt: Dictionary = {
     experience: "Experiência",
     howItWorks: "Como funciona",
     services: "Tratamentos",
+    guidelines: "Orientações",
     reviews: "Testemunhos",
     faq: "Perguntas",
     contact: "Contacto",
@@ -27,12 +28,14 @@ export const pt: Dictionary = {
     tagline: "Massagem ao domicílio em Lisboa",
   },
   hero: {
-    eyebrow: "Massagem ao domicílio · Lisboa",
+    eyebrow: "Massagem ao domicílio • Soul's Touch by Dani",
     titleLineOne: "Abrande.",
-    titleLineTwo: "Regresse a si.",
+    titleLineTwo: "Regresse",
+    titleLineThree: "a si.",
     title: "Abrande. Regresse a si.",
     subtitle:
       "Massagem pensada para o ajudar a reencontrar o corpo, aquietar a mente e guardar um momento só para si.",
+    ctaPrimary: "Reserve o seu momento",
     ctaSecondary: "Conhecer a experiência",
     scroll: "Deslize para explorar",
     imageAlt:

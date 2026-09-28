@@ -12,6 +12,7 @@ export const es: Dictionary = {
     experience: "Experiencia",
     howItWorks: "Cómo funciona",
     services: "Tratamientos",
+    guidelines: "Pautas",
     reviews: "Opiniones",
     faq: "Preguntas",
     contact: "Contacto",
@@ -27,12 +28,14 @@ export const es: Dictionary = {
     tagline: "Masaje a domicilio en Lisboa",
   },
   hero: {
-    eyebrow: "Masaje a domicilio · Lisboa",
+    eyebrow: "Masaje a domicilio • Soul's Touch by Dani",
     titleLineOne: "Baja el ritmo.",
-    titleLineTwo: "Vuelve a ti.",
+    titleLineTwo: "Vuelve",
+    titleLineThree: "a ti.",
     title: "Baja el ritmo. Vuelve a ti.",
     subtitle:
       "Un masaje pensado para reconectar con tu cuerpo, calmar la mente y regalarte un momento solo para ti.",
+    ctaPrimary: "Reserva tu momento",
     ctaSecondary: "Descubre la experiencia",
     scroll: "Desliza para explorar",
     imageAlt:

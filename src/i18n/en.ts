@@ -10,6 +10,7 @@ export const en = {
     experience: "Experience",
     howItWorks: "How it works",
     services: "Treatments",
+    guidelines: "Guidelines",
     reviews: "Reviews",
     faq: "FAQ",
     contact: "Contact",
@@ -25,12 +26,14 @@ export const en = {
     tagline: "Home massage in Lisbon",
   },
   hero: {
-    eyebrow: "Mobile massage · Lisbon",
+    eyebrow: "Home massage • Soul's Touch by Dani",
     titleLineOne: "Slow down.",
-    titleLineTwo: "Come back to yourself.",
+    titleLineTwo: "Come back",
+    titleLineThree: "to yourself.",
     title: "Slow down. Come back to yourself.",
     subtitle:
       "Massage designed to help you reconnect with your body, quiet your mind and simply take a moment for yourself.",
+    ctaPrimary: "Book your moment",
     ctaSecondary: "Explore the experience",
     scroll: "Scroll to explore",
     imageAlt:
