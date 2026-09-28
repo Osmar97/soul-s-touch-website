@@ -6,7 +6,8 @@ import soulBg from "@/assets/SoulBG.png";
 /**
  * Full-screen cinematic hero — inspired by tranquil luxury wellness and Jannata Resort.
  * Uses SoulBG.png as the high-impact visual centerpiece with intelligent cropping,
- * a 3-stop photographic overlay, dominant editorial serif typography, and minimal CTAs.
+ * a 3-stop photographic overlay, dominant editorial serif typography, minimal CTAs,
+ * and a seamless cinematic fade into the warm ivory Brand Philosophy section.
  */
 export function Hero() {
   const t = useT();
@@ -44,12 +45,6 @@ export function Hero() {
         <div
           aria-hidden="true"
           className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60 md:hidden"
-        />
-
-        {/* Soft bottom ambient bleed into page */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-background/40 to-transparent pointer-events-none"
         />
       </div>
 
@@ -102,11 +97,17 @@ export function Hero() {
         </div>
       </div>
 
-      {/* 4. Minimal Bottom Scroll Indicator */}
+      {/* 4. Cinematic bottom fade: dissolves the hero photography seamlessly into the warm ivory Brand Philosophy section */}
+      <div
+        aria-hidden="true"
+        className="hero-bottom-fade pointer-events-none absolute inset-x-0 bottom-0 z-[5] h-[150px] sm:h-[180px] lg:h-[220px]"
+      />
+
+      {/* 5. Minimal Bottom Scroll Indicator — repositioned upward for clear visibility above the fade */}
       <a
         href={`#${SECTIONS.about}`}
         aria-label={t.hero.scroll}
-        className="rise-in group absolute bottom-6 sm:bottom-8 left-1/2 z-10 -translate-x-1/2 flex flex-col items-center gap-2.5 cursor-pointer text-white/60 transition-colors duration-300 hover:text-gold-soft [animation-delay:700ms]"
+        className="rise-in group absolute bottom-10 sm:bottom-14 md:bottom-16 lg:bottom-20 left-1/2 z-20 -translate-x-1/2 flex flex-col items-center gap-2.5 cursor-pointer text-white/70 transition-colors duration-300 hover:text-gold-soft [animation-delay:700ms]"
       >
         <span className="label-luxe text-[0.5625rem] tracking-[0.28em] uppercase transition-colors duration-300 group-hover:text-gold-soft">
           {t.hero.scroll}
