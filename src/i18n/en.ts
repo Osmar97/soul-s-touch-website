@@ -94,6 +94,56 @@ export const en = {
     error: "Your review could not be sent. Please try again.",
   },
 
+  loyalty: {
+    eyebrow: "Loyalty",
+    title: "Your moments, remembered",
+    description:
+      "Every completed session counts. Ten completed sessions unlock 30% off a service of your choice.",
+    referralTitle: "Bring a friend",
+    referralBody:
+      "A new guest receives 15% off their first service. Once their first session is complete, you receive 15% off your next one.",
+    cardTitle: "Your loyalty card",
+    cardSubtitle: "10 completed sessions = 30% off",
+    lookupLabel: "Find your card",
+    lookupPlaceholder: "Email or phone",
+    lookupCta: "View my card",
+    lookupSending: "Looking…",
+    lookupNotFound:
+      "We couldn't find a card with those details. Ask us to add you the next time you book.",
+    lookupError: "Your card could not be loaded. Please try again.",
+    progressLabel: "sessions completed",
+    rewardLocked: "Your reward unlocks at 10 completed sessions.",
+    rewardUnlocked: "Your 30% reward is unlocked.",
+    rewardUsed: "Your reward has been used.",
+    dot: "Session",
+    of: "of",
+    footNote: "Only completed sessions count.",
+  },
+  discovery: {
+    title: "How did you hear about us?",
+    intro: "A quick question before you book — it helps Soul's Touch grow in the right way.",
+    sourceLabel: "How did you find us?",
+    sourcePlaceholder: "Choose an option",
+    sourceFriend: "A friend recommended you",
+    sourceGoogle: "Google",
+    sourceInstagram: "Instagram",
+    sourceTiktok: "TikTok",
+    sourceReturning: "I have booked before",
+    sourceOther: "Other",
+    nameLabel: "Your name",
+    namePlaceholder: "Name",
+    contactLabel: "Email or phone",
+    contactPlaceholder: "you@example.com or +351…",
+    contactHint: "Only used to recognise you and apply your rewards. Never shown publicly.",
+    referrerLabel: "Who referred you?",
+    referrerPlaceholder: "Their name, email or phone",
+    referrerHint: "If a friend sent you, share their details — you both benefit.",
+    submit: "Send",
+    sending: "Sending…",
+    success: "Thank you — your answer has been recorded.",
+    error: "Your answer could not be saved. Please try again.",
+    required: "Please choose an option.",
+  },
   philosophy: {
     eyebrow: "Brand philosophy",
     title: "The soul behind Soul's Touch",
@@ -104,9 +154,12 @@ export const en = {
       "Soul's Touch exists to give people a moment to slow down, breathe and feel cared for.",
   },
   statement: {
+    eyebrow: "Take your moment",
     lineOne: "A moment to slow down.",
     lineTwo: "A moment to reconnect.",
     support: "Your body deserves a moment of stillness.",
+    imageAlt:
+      "A calm massage table dressed in soft linen, with folded towels, a small bowl of oil and eucalyptus",
   },
   homeExperience: {
     eyebrow: "Home massage",
@@ -159,6 +212,15 @@ export const en = {
     oneName: "+10 min head & scalp massage",
     twoName: "+10 min foot massage",
     threeName: "+10 min neck & shoulders",
+  },
+  personalized: {
+    eyebrow: "Personalised massage",
+    title: "A treatment shaped around you",
+    body:
+      "Every session can be adapted to you. Choose the pressure, tell us which areas need attention and ask for a change at any point — the treatment is shaped around what your body needs that day.",
+    imageAlt:
+      "A softly lit massage table beside a wide window, dressed in cream linen with a folded throw",
+    cta: "Book your moment",
   },
   clientExperience: {
     eyebrow: "Client care",

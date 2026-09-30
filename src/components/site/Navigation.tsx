@@ -7,32 +7,69 @@ import { SECTIONS } from "@/config/site";
 import { useT } from "@/i18n";
 import { cn } from "@/lib/utils";
 
+type NavItem = {
+  /** Anchor the link points at. */
+  href: string;
+  /** Id of the section observed for the active state. */
+  section: string;
+  label: string;
+};
+
 /**
- * Minimal luxury header: transparent while the hero is in view, quietly
- * solidifying on scroll. The mobile menu opens as a full-screen overlay.
+ * Solid black luxury header with a larger brand lockup, an ivory / champagne
+ * gold nav, and a scroll-aware active state.
+ *
+ * The active item is driven by a single IntersectionObserver watching a thin
+ * horizontal band across the middle of the viewport — no scroll listeners, no
+ * per-frame React updates, and it tracks the section correctly in both
+ * directions.
  */
 export function Navigation() {
   const t = useT();
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>(SECTIONS.hero);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
 
-  const links = [
-    { href: "#top", label: t.nav.home },
-    { href: `#${SECTIONS.homeExperience}`, label: t.nav.experience },
-    { href: `#${SECTIONS.services}`, label: t.nav.services },
-    { href: `#${SECTIONS.clientExperience}`, label: t.nav.guidelines },
-    { href: `#${SECTIONS.faq}`, label: t.nav.faq },
-    { href: `#${SECTIONS.reviews}`, label: t.nav.reviews },
+  const links: NavItem[] = [
+    { href: "#top", section: SECTIONS.hero, label: t.nav.home },
+    { href: `#${SECTIONS.homeExperience}`, section: SECTIONS.homeExperience, label: t.nav.experience },
+    { href: `#${SECTIONS.services}`, section: SECTIONS.services, label: t.nav.services },
+    {
+      href: `#${SECTIONS.clientExperience}`,
+      section: SECTIONS.clientExperience,
+      label: t.nav.guidelines,
+    },
+    { href: `#${SECTIONS.faq}`, section: SECTIONS.faq, label: t.nav.faq },
+    { href: `#${SECTIONS.reviews}`, section: SECTIONS.reviews, label: t.nav.reviews },
   ];
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    const observed = links
+      .map((link) => document.getElementById(link.section))
+      .filter((element): element is HTMLElement => element !== null);
+
+    if (observed.length === 0 || typeof IntersectionObserver === "undefined") return;
+
+    // A narrow band just above the middle of the viewport decides which
+    // section currently owns the navigation.
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entering = entries.filter((entry) => entry.isIntersecting);
+        if (entering.length === 0) return;
+        entering.sort(
+          (a, b) => a.boundingClientRect.top - b.boundingClientRect.top,
+        );
+        const next = entering[0]?.target.id;
+        if (next) setActiveSection(next);
+      },
+      { rootMargin: "-42% 0px -54% 0px", threshold: 0 },
+    );
+
+    for (const element of observed) observer.observe(element);
+    return () => observer.disconnect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -69,15 +106,10 @@ export function Navigation() {
     };
   }, [open]);
 
+  const isActive = (section: string) => section === activeSection;
+
   return (
-    <header
-      className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-700 ease-out",
-        scrolled
-          ? "border-b border-gold/15 bg-background/90 backdrop-blur-md shadow-sm"
-          : "border-b border-transparent bg-transparent",
-      )}
-    >
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-ink">
       <a
         href="#main"
         className="label-luxe sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:bg-background focus:px-4 focus:py-2"
@@ -85,46 +117,42 @@ export function Navigation() {
         {t.nav.skipToContent}
       </a>
 
-      <div
-        className={cn(
-          "container-luxe flex items-center justify-between gap-8 transition-all duration-700 ease-out",
-          scrolled ? "h-16 lg:h-20" : "h-20 lg:h-28",
-        )}
-      >
+      <div className="container-luxe flex h-20 items-center justify-between gap-4 lg:h-24 xl:gap-8">
         <a href="#top" aria-label={`${t.brand.name} ${t.brand.by}`} className="shrink-0">
-          <Wordmark tone={scrolled ? "default" : "onInk"} className="items-start" />
+          <Wordmark tone="onInk" size="lg" className="items-start" />
         </a>
 
-        <nav aria-label="Primary" className="hidden lg:block">
-          <ul className="flex items-center gap-8 xl:gap-11">
-            {links.map((link) => (
-              <li key={link.label}>
-                <a
-                  href={link.href}
-                  className={cn(
-                    "label-luxe relative inline-flex min-h-11 items-center transition-all duration-300 after:absolute after:bottom-1 after:left-0 after:h-px after:w-0 after:bg-gold after:transition-all after:duration-300 hover:after:w-full",
-                    scrolled
-                      ? "text-muted-foreground hover:text-foreground"
-                      : "text-white/80 hover:text-white hover:opacity-100",
-                  )}
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
+        <nav aria-label="Primary" className="hidden min-w-0 flex-1 justify-center lg:flex">
+          <ul className="flex items-center gap-4 xl:gap-4 2xl:gap-7">
+            {links.map((link) => {
+              const active = isActive(link.section);
+              return (
+                <li key={link.section}>
+                  <a
+                    href={link.href}
+                    aria-current={active ? "true" : undefined}
+                    className={cn(
+                      "relative inline-flex min-h-11 items-center whitespace-nowrap font-sans text-[0.625rem] font-normal uppercase tracking-[0.16em] transition-colors duration-300 after:absolute after:bottom-2 after:left-0 after:h-px after:bg-gold after:transition-all after:duration-500 after:ease-out xl:text-[0.6875rem] xl:tracking-[0.18em]",
+                      active
+                        ? "text-gold-soft after:w-full"
+                        : "text-white/70 after:w-0 hover:text-white hover:after:w-full",
+                    )}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         </nav>
 
-        <div className="hidden items-center gap-6 xl:gap-8 lg:flex">
-          <LanguageSwitcher tone={scrolled ? "default" : "onInk"} />
+        <div className="hidden items-center gap-4 lg:flex xl:gap-6">
+          <LanguageSwitcher tone="onInk" className="hidden xl:flex" />
           <BookingCta
-            variant={scrolled ? "outline" : "onInk"}
+            variant="onInk"
             size="sm"
             label={t.common.bookNow}
-            className={cn(
-              "rounded-none border-gold/60 text-[0.6875rem] uppercase tracking-[0.24em] transition-all duration-300",
-              !scrolled && "border-gold/60 text-white/95 hover:border-gold hover:bg-gold/15 hover:text-white",
-            )}
+            className="whitespace-nowrap px-4 tracking-[0.2em] transition-all duration-300 hover:border-gold hover:bg-gold/15 xl:px-5"
           />
         </div>
 
@@ -135,24 +163,11 @@ export function Navigation() {
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={t.nav.open}
-          className={cn(
-            "label-luxe flex min-h-11 min-w-11 cursor-pointer items-center justify-end gap-3 transition-colors duration-300 lg:hidden",
-            scrolled ? "text-foreground" : "text-white",
-          )}
+          className="label-luxe flex min-h-11 min-w-11 cursor-pointer items-center justify-end gap-3 text-white transition-colors duration-300 lg:hidden"
         >
           <span aria-hidden="true" className="flex h-2.5 w-6 flex-col justify-between">
-            <span
-              className={cn(
-                "block h-px w-full transition-colors duration-300",
-                scrolled ? "bg-foreground" : "bg-white",
-              )}
-            />
-            <span
-              className={cn(
-                "block h-px w-4/5 transition-colors duration-300",
-                scrolled ? "bg-foreground" : "bg-white",
-              )}
-            />
+            <span className="block h-px w-full bg-white" />
+            <span className="block h-px w-4/5 bg-white" />
           </span>
           <span className="sr-only sm:not-sr-only">{t.nav.menu}</span>
         </button>
@@ -169,7 +184,7 @@ export function Navigation() {
         className="fixed inset-0 z-50 flex flex-col overflow-y-auto bg-ink text-ink-foreground lg:hidden"
       >
         <div className="container-luxe flex h-24 shrink-0 items-center justify-between">
-          <Wordmark tone="onInk" className="items-start" />
+          <Wordmark tone="onInk" size="lg" className="items-start" />
           <button
             ref={closeButtonRef}
             type="button"
@@ -186,17 +201,25 @@ export function Navigation() {
           className="container-luxe my-auto flex flex-col justify-center py-8"
         >
           <ul className="flex flex-col gap-1">
-            {[...links, { href: `#${SECTIONS.booking}`, label: t.nav.book }].map((link) => (
-              <li key={link.label}>
-                <a
-                  href={link.href}
-                  onClick={() => setOpen(false)}
-                  className="block py-3 font-serif text-3xl text-ink-foreground transition-colors duration-300 hover:text-gold"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
+            {[...links, { href: `#${SECTIONS.booking}`, section: SECTIONS.booking, label: t.nav.book }].map(
+              (link) => (
+                <li key={link.section}>
+                  <a
+                    href={link.href}
+                    onClick={() => setOpen(false)}
+                    aria-current={isActive(link.section) ? "true" : undefined}
+                    className={cn(
+                      "block border-l py-3 pl-5 font-serif text-3xl transition-colors duration-300",
+                      isActive(link.section)
+                        ? "border-gold text-gold"
+                        : "border-transparent text-ink-foreground hover:text-gold",
+                    )}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ),
+            )}
           </ul>
         </nav>
 

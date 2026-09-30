@@ -14,6 +14,7 @@ export function Hero() {
 
   return (
     <section
+      id={SECTIONS.hero}
       aria-label={t.brand.name}
       className="relative flex h-[100svh] min-h-[640px] w-full items-center overflow-hidden bg-ink md:h-screen md:min-h-[720px]"
     >

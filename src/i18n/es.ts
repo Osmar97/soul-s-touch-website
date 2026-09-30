@@ -96,6 +96,59 @@ export const es: Dictionary = {
     error: "No se ha podido enviar tu opinión. Inténtalo de nuevo.",
   },
 
+  loyalty: {
+    eyebrow: "Fidelidad",
+    title: "Tus momentos, recordados",
+    description:
+      "Cada sesión completada cuenta. Diez sesiones completadas desbloquean un 30% de descuento en un tratamiento a tu elección.",
+    referralTitle: "Trae a un amigo",
+    referralBody:
+      "Un nuevo cliente recibe un 15% de descuento en su primer tratamiento. Cuando su primera sesión esté completada, tú recibes un 15% de descuento en la siguiente.",
+    cardTitle: "Tu tarjeta de fidelidad",
+    cardSubtitle: "10 sesiones completadas = 30% de descuento",
+    lookupLabel: "Encuentra tu tarjeta",
+    lookupPlaceholder: "Email o teléfono",
+    lookupCta: "Ver mi tarjeta",
+    lookupSending: "Buscando…",
+    lookupNotFound:
+      "No encontramos una tarjeta con esos datos. Pide que te añadamos la próxima vez que reserves.",
+    lookupError: "No se ha podido cargar tu tarjeta. Inténtalo de nuevo.",
+    progressLabel: "sesiones completadas",
+    rewardLocked: "Tu recompensa se desbloquea con 10 sesiones completadas.",
+    rewardUnlocked: "Tu recompensa del 30% está desbloqueada.",
+    rewardUsed: "Tu recompensa se ha utilizado.",
+    dot: "Sesión",
+    of: "de",
+    footNote: "Solo cuentan las sesiones completadas.",
+  },
+  discovery: {
+    title: "¿Cómo nos conociste?",
+    intro:
+      "Una rápida pregunta antes de reservar — ayuda a Soul's Touch a crecer de la manera correcta.",
+    sourceLabel: "¿Cómo nos encontraste?",
+    sourcePlaceholder: "Elige una opción",
+    sourceFriend: "Un amigo me recomendó",
+    sourceGoogle: "Google",
+    sourceInstagram: "Instagram",
+    sourceTiktok: "TikTok",
+    sourceReturning: "Ya he reservado antes",
+    sourceOther: "Otro",
+    nameLabel: "Tu nombre",
+    namePlaceholder: "Nombre",
+    contactLabel: "Email o teléfono",
+    contactPlaceholder: "tu@ejemplo.com o +34…",
+    contactHint:
+      "Solo para reconocerte y aplicar tus recompensas. Nunca se muestra públicamente.",
+    referrerLabel: "¿Quién te recomendó?",
+    referrerPlaceholder: "Su nombre, email o teléfono",
+    referrerHint: "Si te envió un amigo, comparte sus datos — ambos os beneficiáis.",
+    submit: "Enviar",
+    sending: "Enviando…",
+    success: "Gracias — tu respuesta ha quedado registrada.",
+    error: "No se ha podido guardar tu respuesta. Inténtalo de nuevo.",
+    required: "Elige una opción.",
+  },
+
   philosophy: {
     eyebrow: "Filosofía de marca",
     title: "El alma detrás de Soul's Touch",
@@ -106,9 +159,12 @@ export const es: Dictionary = {
       "Soul's Touch nace para ofrecer un momento para bajar el ritmo, respirar y sentirse cuidado.",
   },
   statement: {
+    eyebrow: "Tómate tu momento",
     lineOne: "Un momento para bajar el ritmo.",
     lineTwo: "Un momento para reconectar.",
     support: "Tu cuerpo merece un momento de calma.",
+    imageAlt:
+      "Una camilla de masaje serena, vestida con lino suave, toallas dobladas, un pequeño bol de aceite y eucalipto",
   },
   homeExperience: {
     eyebrow: "Masaje a domicilio",
@@ -162,6 +218,15 @@ export const es: Dictionary = {
     oneName: "+10 min masaje de cabeza y cuero cabelludo",
     twoName: "+10 min masaje de pies",
     threeName: "+10 min cuello y hombros",
+  },
+  personalized: {
+    eyebrow: "Masaje personalizado",
+    title: "Un tratamiento hecho a tu medida",
+    body:
+      "Cada sesión puede adaptarse a ti. Elige la presión, indica las zonas que necesitan atención y pide un cambio en cualquier momento — el tratamiento se adapta a lo que tu cuerpo necesita ese día.",
+    imageAlt:
+      "Una camilla de masaje iluminada suavemente junto a una ventana amplia, vestida con lino crema y una manta doblada",
+    cta: "Reserva tu momento",
   },
   clientExperience: {
     eyebrow: "Cuidado al cliente",

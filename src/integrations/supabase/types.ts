@@ -8,6 +8,102 @@ export type Database = {
   };
   public: {
     Tables: {
+      customers: {
+        Row: {
+          created_at: string;
+          discovery_source: string | null;
+          email: string | null;
+          full_name: string | null;
+          id: string;
+          phone: string | null;
+          referred_by: string | null;
+          updated_at: string;
+        };
+        Insert: {
+          created_at?: string;
+          discovery_source?: string | null;
+          email?: string | null;
+          full_name?: string | null;
+          id?: string;
+          phone?: string | null;
+          referred_by?: string | null;
+          updated_at?: string;
+        };
+        Update: {
+          created_at?: string;
+          discovery_source?: string | null;
+          email?: string | null;
+          full_name?: string | null;
+          id?: string;
+          phone?: string | null;
+          referred_by?: string | null;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
+      loyalty: {
+        Row: {
+          completed_sessions: number;
+          customer_id: string;
+          reward_status: string;
+          reward_type: string | null;
+          reward_used: boolean;
+          updated_at: string;
+        };
+        Insert: {
+          completed_sessions?: number;
+          customer_id: string;
+          reward_status?: string;
+          reward_type?: string | null;
+          reward_used?: boolean;
+          updated_at?: string;
+        };
+        Update: {
+          completed_sessions?: number;
+          customer_id?: string;
+          reward_status?: string;
+          reward_type?: string | null;
+          reward_used?: boolean;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
+      referrals: {
+        Row: {
+          created_at: string;
+          first_completed_service_at: string | null;
+          id: string;
+          referred_customer_id: string;
+          referred_reward_status: string;
+          referral_status: string;
+          referrer_customer_id: string;
+          referrer_reward_status: string;
+          updated_at: string;
+        };
+        Insert: {
+          created_at?: string;
+          first_completed_service_at?: string | null;
+          id?: string;
+          referred_customer_id: string;
+          referred_reward_status?: string;
+          referral_status?: string;
+          referrer_customer_id: string;
+          referrer_reward_status?: string;
+          updated_at?: string;
+        };
+        Update: {
+          created_at?: string;
+          first_completed_service_at?: string | null;
+          id?: string;
+          referred_customer_id?: string;
+          referred_reward_status?: string;
+          referral_status?: string;
+          referrer_customer_id?: string;
+          referrer_reward_status?: string;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
       reviews: {
         Row: {
           author_name: string;
@@ -47,6 +143,42 @@ export type Database = {
         };
         Relationships: [];
       };
+      sessions: {
+        Row: {
+          appointment_ref: string | null;
+          completed_at: string | null;
+          created_at: string;
+          customer_id: string;
+          id: string;
+          service_label: string | null;
+          session_date: string;
+          status: string;
+          updated_at: string;
+        };
+        Insert: {
+          appointment_ref?: string | null;
+          completed_at?: string | null;
+          created_at?: string;
+          customer_id: string;
+          id?: string;
+          service_label?: string | null;
+          session_date?: string;
+          status?: string;
+          updated_at?: string;
+        };
+        Update: {
+          appointment_ref?: string | null;
+          completed_at?: string | null;
+          created_at?: string;
+          customer_id?: string;
+          id?: string;
+          service_label?: string | null;
+          session_date?: string;
+          status?: string;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
       user_roles: {
         Row: {
           created_at: string;
@@ -79,6 +211,27 @@ export type Database = {
           _user_id: string;
         };
         Returns: boolean;
+      };
+      lookup_loyalty: {
+        Args: {
+          p_identifier: string;
+        };
+        Returns: {
+          display_name: string;
+          completed_sessions: number;
+          reward_status: string;
+          reward_used: boolean;
+        }[];
+      };
+      record_discovery: {
+        Args: {
+          p_email?: string;
+          p_name?: string;
+          p_phone?: string;
+          p_referrer?: string;
+          p_source?: string;
+        };
+        Returns: string;
       };
     };
     Enums: {

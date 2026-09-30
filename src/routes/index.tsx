@@ -10,6 +10,7 @@ import { BrandStatement } from "@/components/site/BrandStatement";
 import { HomeExperience } from "@/components/site/HomeExperience";
 import { HowItWorks } from "@/components/site/HowItWorks";
 import { Services } from "@/components/site/Services";
+import { PersonalizedMassage } from "@/components/site/PersonalizedMassage";
 import { ClientExperience } from "@/components/site/ClientExperience";
 import { Reviews } from "@/components/site/Reviews";
 import { Faq } from "@/components/site/Faq";
@@ -94,6 +95,8 @@ function HomePage() {
         <HowItWorks />
 
         <Services />
+
+        <PersonalizedMassage />
 
         <ClientExperience />
 

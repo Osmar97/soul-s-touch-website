@@ -24,13 +24,17 @@ export const SITE = {
 
 /** In-page section anchors — used by nav, footer and the page shell. */
 export const SECTIONS = {
+  hero: "home",
   about: "about",
   homeExperience: "home-experience",
   services: "services",
+  personalized: "personalised-massage",
+  statement: "take-your-moment",
   howItWorks: "how-it-works",
   clientExperience: "client-experience",
   reviews: "reviews",
   faq: "faq",
+  loyalty: "loyalty",
   booking: "booking",
   contact: "contact",
 } as const;

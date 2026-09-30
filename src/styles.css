@@ -6,7 +6,7 @@
 /*
  * SOUL'S TOUCH BY DANI — design system
  *
- * Palette: deep black + warm metallic gold, on soft ivory.
+ * Palette: black + warm beige / ivory + muted champagne gold.
  * Gold is an accent only: hairlines, small caps labels, focus rings.
  * All colors use oklch.
  */
@@ -37,6 +37,7 @@
   --color-gold: var(--gold);
   --color-gold-soft: var(--gold-soft);
   --color-gold-deep: var(--gold-deep);
+  --color-beige: var(--beige);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
@@ -57,9 +58,12 @@
 :root {
   --radius: 2px;
 
-  /* warm ivory */
+  /* warm ivory — intentionally unchanged: the hero fade resolves to #f9f6f0 */
   --background: oklch(0.973 0.008 85);
   --foreground: oklch(0.19 0.007 60);
+
+  /* warm beige — the brand's soft neutral */
+  --beige: oklch(0.94 0.022 85);
 
   /* deep black surface */
   --ink: oklch(0.145 0.004 60);
@@ -73,27 +77,27 @@
   --primary: oklch(0.145 0.004 60);
   --primary-foreground: oklch(0.965 0.008 85);
 
-  --secondary: oklch(0.945 0.009 85);
+  --secondary: oklch(0.945 0.016 85);
   --secondary-foreground: oklch(0.19 0.007 60);
 
-  --muted: oklch(0.945 0.009 85);
+  --muted: oklch(0.945 0.016 85);
   --muted-foreground: oklch(0.48 0.008 70);
 
-  --accent: oklch(0.93 0.012 82);
+  --accent: oklch(0.928 0.024 85);
   --accent-foreground: oklch(0.19 0.007 60);
 
-  /* warm metallic gold */
-  --gold: oklch(0.71 0.083 78);
-  --gold-soft: oklch(0.83 0.055 82);
-  --gold-deep: oklch(0.58 0.078 72);
+  /* muted champagne gold — never bright, never saturated */
+  --gold: oklch(0.74 0.055 84);
+  --gold-soft: oklch(0.855 0.045 86);
+  --gold-deep: oklch(0.53 0.05 80);
 
   --destructive: oklch(0.52 0.15 27);
   --destructive-foreground: oklch(0.98 0.005 85);
 
-  --border: oklch(0.89 0.01 82);
-  --hairline: oklch(0.71 0.083 78 / 35%);
-  --input: oklch(0.87 0.011 82);
-  --ring: oklch(0.71 0.083 78);
+  --border: oklch(0.895 0.014 85);
+  --hairline: oklch(0.74 0.055 84 / 35%);
+  --input: oklch(0.87 0.016 85);
+  --ring: oklch(0.53 0.05 80);
 }
 
 .dark {
@@ -113,15 +117,16 @@
   --muted-foreground: oklch(0.72 0.008 75);
   --accent: oklch(0.24 0.008 65);
   --accent-foreground: oklch(0.965 0.008 85);
-  --gold: oklch(0.78 0.078 80);
-  --gold-soft: oklch(0.86 0.05 82);
-  --gold-deep: oklch(0.66 0.08 75);
+  --beige: oklch(0.26 0.012 70);
+  --gold: oklch(0.8 0.05 85);
+  --gold-soft: oklch(0.87 0.04 86);
+  --gold-deep: oklch(0.75 0.05 84);
   --destructive: oklch(0.6 0.16 27);
   --destructive-foreground: oklch(0.98 0.005 85);
   --border: oklch(1 0 0 / 12%);
-  --hairline: oklch(0.78 0.078 80 / 35%);
+  --hairline: oklch(0.8 0.05 85 / 35%);
   --input: oklch(1 0 0 / 16%);
-  --ring: oklch(0.78 0.078 80);
+  --ring: oklch(0.8 0.05 85);
 }
 
 @layer base {
@@ -157,7 +162,7 @@
   }
 
   :focus-visible {
-    outline: 1px solid var(--color-gold);
+    outline: 1px solid var(--color-gold-deep);
     outline-offset: 3px;
   }
 
@@ -285,7 +290,7 @@
     rgba(249, 246, 240, 0) 0%,
     rgba(249, 246, 240, 0.15) 30%,
     rgba(249, 246, 240, 0.55) 60%,
-    rgba(249, 246, 240, 0.90) 82%,
+    rgba(249, 246, 240, 0.9) 82%,
     rgba(249, 246, 240, 0.98) 92%,
     #f9f6f0 96%,
     #f9f6f0 100%
@@ -298,11 +303,138 @@
     oklch(0.145 0.004 60 / 0) 0%,
     oklch(0.145 0.004 60 / 0.15) 30%,
     oklch(0.145 0.004 60 / 0.55) 60%,
-    oklch(0.145 0.004 60 / 0.90) 82%,
+    oklch(0.145 0.004 60 / 0.9) 82%,
     oklch(0.145 0.004 60 / 0.98) 92%,
     oklch(0.145 0.004 60) 96%,
     oklch(0.145 0.004 60) 100%
   );
 }
 
+/* ============================================================================
+ * CLIENT CARE — pinned editorial storytelling stage
+ *
+ * Static flow is the default (mobile, no-JS, reduced motion). The pinned
+ * sequence only switches on for >=768px when the visitor has not asked for
+ * reduced motion. Everything stays in the document flow: `position: sticky`
+ * keeps the stage part of normal layout, so the following section never
+ * enters the viewport before the three states have been experienced.
+ * ========================================================================== */
+.story-section {
+  padding-block: 6rem;
+}
 
+.story-track {
+  position: relative;
+  height: auto;
+}
+
+.story-stage {
+  position: relative;
+}
+
+.story-window {
+  position: relative;
+}
+
+.story-list {
+  position: relative;
+}
+
+.story-state + .story-state {
+  margin-top: 3.5rem;
+}
+
+@media (min-width: 768px) {
+  .story-section {
+    padding-block: 8rem;
+  }
+}
+
+@media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+  .story-section {
+    padding-block: 0;
+  }
+
+  /* scroll distance for the three states */
+  .story-track {
+    height: 300vh;
+  }
+
+  .story-stage {
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    height: 100svh;
+    padding-top: 4.5rem;
+  }
+
+  /* editorial window: the active state sits on the optical centre */
+  .story-window {
+    height: clamp(16rem, 42vh, 26rem);
+    overflow: hidden;
+  }
+
+  .story-list {
+    position: absolute;
+    inset: 0;
+    --slot: clamp(10rem, 21vh, 13rem);
+    --pos: 0;
+  }
+
+  .story-state + .story-state {
+    margin-top: 0;
+  }
+
+  .story-state {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    left: 0;
+    transform: translateY(calc(-50% + (var(--i, 0) - var(--pos, 0)) * var(--slot)));
+    opacity: var(--o, 1);
+    will-change: transform, opacity;
+  }
+
+  .story-after {
+    padding-bottom: 7rem;
+  }
+}
+
+/* Short laptop viewports: keep the entire stage comfortably on screen. */
+@media (min-width: 768px) and (max-height: 780px) and (prefers-reduced-motion: no-preference) {
+  .story-stage {
+    padding-top: 4rem;
+  }
+
+  .story-window {
+    height: clamp(14rem, 38vh, 22rem);
+  }
+
+  .story-list {
+    --slot: clamp(9.5rem, 27vh, 12rem);
+  }
+}
+
+/* Restrained entrance: a short fade + rise, revealed once on intersection. */
+.reveal {
+  opacity: 0;
+  transform: translateY(1.25rem);
+  transition:
+    opacity 1s cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 1s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.reveal.is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
