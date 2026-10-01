@@ -161,7 +161,7 @@ function AdminCustomersPage() {
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => navigate({ to: "/admin/reviews" })}
+              onClick={() => navigate({ to: "/admin" })}
             >
               Reviews
             </Button>

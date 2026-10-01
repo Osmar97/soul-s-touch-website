@@ -35,7 +35,7 @@ function AuthPage() {
       setError(signInError.message);
       return;
     }
-    navigate({ to: "/admin/reviews" });
+    navigate({ to: "/admin" });
   }
 
   return (
