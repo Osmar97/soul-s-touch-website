@@ -31,7 +31,7 @@ const AuthRoute = AuthRouteImport.update({
 } as any)
 const AuthenticatedAdminCustomersRoute =
   AuthenticatedAdminCustomersRouteImport.update({
-    id: '/_authenticated/admin/customers',
+    id: '/admin/customers',
     path: '/admin/customers',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
