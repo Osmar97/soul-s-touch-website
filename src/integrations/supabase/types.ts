@@ -14,6 +14,133 @@ export type Database = {
   }
   public: {
     Tables: {
+      customers: {
+        Row: {
+          created_at: string
+          discovery_source: string | null
+          email: string | null
+          full_name: string | null
+          id: string
+          phone: string | null
+          referred_by: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          discovery_source?: string | null
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          phone?: string | null
+          referred_by?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          discovery_source?: string | null
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          phone?: string | null
+          referred_by?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "customers_referred_by_fkey"
+            columns: ["referred_by"]
+            isOneToOne: false
+            referencedRelation: "customers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      loyalty: {
+        Row: {
+          completed_sessions: number
+          customer_id: string
+          reward_status: string
+          reward_type: string | null
+          reward_used: boolean
+          updated_at: string
+        }
+        Insert: {
+          completed_sessions?: number
+          customer_id: string
+          reward_status?: string
+          reward_type?: string | null
+          reward_used?: boolean
+          updated_at?: string
+        }
+        Update: {
+          completed_sessions?: number
+          customer_id?: string
+          reward_status?: string
+          reward_type?: string | null
+          reward_used?: boolean
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "loyalty_customer_id_fkey"
+            columns: ["customer_id"]
+            isOneToOne: true
+            referencedRelation: "customers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      referrals: {
+        Row: {
+          created_at: string
+          first_completed_service_at: string | null
+          id: string
+          referral_status: string
+          referred_customer_id: string
+          referred_reward_status: string
+          referrer_customer_id: string
+          referrer_reward_status: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          first_completed_service_at?: string | null
+          id?: string
+          referral_status?: string
+          referred_customer_id: string
+          referred_reward_status?: string
+          referrer_customer_id: string
+          referrer_reward_status?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          first_completed_service_at?: string | null
+          id?: string
+          referral_status?: string
+          referred_customer_id?: string
+          referred_reward_status?: string
+          referrer_customer_id?: string
+          referrer_reward_status?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "referrals_referred_customer_id_fkey"
+            columns: ["referred_customer_id"]
+            isOneToOne: true
+            referencedRelation: "customers"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "referrals_referrer_customer_id_fkey"
+            columns: ["referrer_customer_id"]
+            isOneToOne: false
+            referencedRelation: "customers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       reviews: {
         Row: {
           author_name: string
@@ -53,6 +180,50 @@ export type Database = {
         }
         Relationships: []
       }
+      sessions: {
+        Row: {
+          appointment_ref: string | null
+          completed_at: string | null
+          created_at: string
+          customer_id: string
+          id: string
+          service_label: string | null
+          session_date: string
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          appointment_ref?: string | null
+          completed_at?: string | null
+          created_at?: string
+          customer_id: string
+          id?: string
+          service_label?: string | null
+          session_date?: string
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          appointment_ref?: string | null
+          completed_at?: string | null
+          created_at?: string
+          customer_id?: string
+          id?: string
+          service_label?: string | null
+          session_date?: string
+          status?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "sessions_customer_id_fkey"
+            columns: ["customer_id"]
+            isOneToOne: false
+            referencedRelation: "customers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       user_roles: {
         Row: {
           created_at: string
@@ -86,6 +257,26 @@ export type Database = {
         }
         Returns: boolean
       }
+      lookup_loyalty: {
+        Args: { p_identifier: string }
+        Returns: {
+          completed_sessions: number
+          display_name: string
+          reward_status: string
+          reward_used: boolean
+        }[]
+      }
+      record_discovery: {
+        Args: {
+          p_email?: string
+          p_name?: string
+          p_phone?: string
+          p_referrer?: string
+          p_source?: string
+        }
+        Returns: string
+      }
+      refresh_loyalty: { Args: { p_customer_id: string }; Returns: undefined }
     }
     Enums: {
       app_role: "admin" | "moderator" | "user"
