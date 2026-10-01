@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
  * the surrounding layout does not change.
  *
  * `size="lg"` gives the header a more confident, hospitality-scale presence.
+ * `size="xl"` gives an even larger presence for the main nav at large breakpoints.
  */
 export function Wordmark({
   className,
@@ -15,10 +16,11 @@ export function Wordmark({
 }: {
   className?: string;
   tone?: "default" | "onInk";
-  size?: "md" | "lg";
+  size?: "md" | "lg" | "xl";
   as?: "span" | "div";
 }) {
   const large = size === "lg";
+  const xlarge = size === "xl";
 
   return (
     <Tag
@@ -31,9 +33,11 @@ export function Wordmark({
       <span
         className={cn(
           "font-serif uppercase",
-          large
-            ? "text-[1.05rem] tracking-[0.2em] xl:text-[1.2rem] xl:tracking-[0.22em]"
-            : "text-[1.05rem] tracking-[0.28em] sm:text-[1.15rem]",
+          xlarge
+            ? "text-[1.25rem] tracking-[0.22em] sm:text-[1.4rem] sm:tracking-[0.24em] lg:text-[1.55rem] lg:tracking-[0.26em] xl:text-[1.7rem] xl:tracking-[0.28em]"
+            : large
+              ? "text-[1.05rem] tracking-[0.2em] xl:text-[1.2rem] xl:tracking-[0.22em]"
+              : "text-[1.05rem] tracking-[0.28em] sm:text-[1.15rem]",
         )}
       >
         Soul&rsquo;s Touch
@@ -41,7 +45,11 @@ export function Wordmark({
       <span
         className={cn(
           "label-luxe mt-1.5",
-          large ? "text-[0.5rem] xl:text-[0.5625rem]" : "text-[0.55rem]",
+          xlarge
+            ? "text-[0.55rem] tracking-[0.28em] sm:text-[0.5625rem] lg:text-[0.625rem]"
+            : large
+              ? "text-[0.5rem] xl:text-[0.5625rem]"
+              : "text-[0.55rem]",
           tone === "onInk" ? "text-gold-soft" : "text-gold-deep",
         )}
       >

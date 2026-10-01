@@ -50,7 +50,7 @@ export function Hero() {
       </div>
 
       {/* 3. Hero Content — Positioned Left / Center-Left */}
-      <div className="container-luxe relative z-10 flex h-full w-full flex-col justify-center pt-24 pb-20 sm:pt-28 sm:pb-24 lg:pt-32 lg:pb-28">
+      <div className="container-luxe relative z-10 flex h-full w-full flex-col justify-center pt-28 pb-20 sm:pt-32 sm:pb-24 lg:pt-36 lg:pb-28">
         <div className="max-w-xl xl:max-w-2xl text-left">
           {/* Eyebrow */}
           <div className="rise-in">

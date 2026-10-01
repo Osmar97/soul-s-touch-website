@@ -1,6 +1,7 @@
 import { Section } from "./Section";
 import { SectionHeading } from "./SectionHeading";
 import { SetmoreBooking } from "./SetmoreBooking";
+import { DiscoveryForm } from "./DiscoveryForm";
 import { Button, ButtonLink } from "./Button";
 import { SECTIONS } from "@/config/site";
 import { buildWhatsAppUrl } from "@/config/booking";
@@ -36,6 +37,8 @@ export function Booking() {
 
       <div className="mx-auto mt-14 max-w-3xl">
         <SetmoreBooking />
+
+        <DiscoveryForm />
 
         <dl className="mt-14 grid gap-10 border-t border-ink-foreground/10 pt-10 sm:grid-cols-3 sm:gap-8">
           {info.map((item) => (

@@ -55,17 +55,26 @@ function AdminReviewsPage() {
       <div className="mx-auto max-w-4xl">
         <div className="flex items-start justify-between gap-6">
           <Wordmark className="items-start" />
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={async () => {
-              await supabase.auth.signOut();
-              queryClient.clear();
-              navigate({ to: "/auth" });
-            }}
-          >
-            Sign out
-          </Button>
+          <div className="flex flex-wrap items-center justify-end gap-3">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => navigate({ to: "/admin/customers" })}
+            >
+              Customers
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={async () => {
+                await supabase.auth.signOut();
+                queryClient.clear();
+                navigate({ to: "/auth" });
+              }}
+            >
+              Sign out
+            </Button>
+          </div>
         </div>
 
         <h1 className="mt-12 font-serif text-3xl text-foreground">Review moderation</h1>

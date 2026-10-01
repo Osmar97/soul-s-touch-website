@@ -117,9 +117,9 @@ export function Navigation() {
         {t.nav.skipToContent}
       </a>
 
-      <div className="container-luxe flex h-20 items-center justify-between gap-4 lg:h-24 xl:gap-8">
+      <div className="container-luxe flex h-24 items-center justify-between gap-4 lg:h-28 xl:gap-8">
         <a href="#top" aria-label={`${t.brand.name} ${t.brand.by}`} className="shrink-0">
-          <Wordmark tone="onInk" size="lg" className="items-start" />
+          <Wordmark tone="onInk" size="xl" className="items-start" />
         </a>
 
         <nav aria-label="Primary" className="hidden min-w-0 flex-1 justify-center lg:flex">
@@ -184,7 +184,7 @@ export function Navigation() {
         className="fixed inset-0 z-50 flex flex-col overflow-y-auto bg-ink text-ink-foreground lg:hidden"
       >
         <div className="container-luxe flex h-24 shrink-0 items-center justify-between">
-          <Wordmark tone="onInk" size="lg" className="items-start" />
+          <Wordmark tone="onInk" size="xl" className="items-start" />
           <button
             ref={closeButtonRef}
             type="button"

@@ -14,6 +14,7 @@ import { PersonalizedMassage } from "@/components/site/PersonalizedMassage";
 import { ClientExperience } from "@/components/site/ClientExperience";
 import { Reviews } from "@/components/site/Reviews";
 import { Faq } from "@/components/site/Faq";
+import { Loyalty } from "@/components/site/Loyalty";
 import { Booking } from "@/components/site/Booking";
 import { Contact } from "@/components/site/Contact";
 
@@ -103,6 +104,8 @@ function HomePage() {
         <Reviews />
 
         <Faq />
+
+        <Loyalty />
 
         <Booking />
 
