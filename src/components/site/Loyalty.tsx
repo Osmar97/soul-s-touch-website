@@ -34,7 +34,7 @@ function isRewardStatus(value: string): value is RewardStatus {
  */
 export function Loyalty() {
   const t = useT();
-  const revealRef = useReveal<HTMLElement>();
+  const revealRef = useReveal<HTMLDivElement>();
   const [identifier, setIdentifier] = useState("");
   const [card, setCard] = useState<Card | null>(null);
   const [status, setStatus] = useState<LookupState>("idle");

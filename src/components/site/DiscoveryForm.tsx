@@ -211,4 +211,4 @@ export function DiscoveryForm() {
 }
 
 /** Kept for parity with the other form modules that export their dictionary keys. */
-export type DiscoveryDictionary = Dictionary["discovery"];
+export type DiscoveryDictionary = ReturnType<typeof useT>["discovery"];
