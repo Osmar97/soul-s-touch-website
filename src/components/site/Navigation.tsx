@@ -28,6 +28,7 @@ export function Navigation() {
   const t = useT();
   const [open, setOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>(SECTIONS.hero);
+  const [scrolled, setScrolled] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
@@ -73,6 +74,13 @@ export function Navigation() {
   }, []);
 
   useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 48);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
     if (!open) return;
     const trigger = menuButtonRef.current;
     const onKey = (event: KeyboardEvent) => {
@@ -109,7 +117,12 @@ export function Navigation() {
   const isActive = (section: string) => section === activeSection;
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-ink">
+    <header
+      className={cn(
+        "fixed inset-x-0 top-0 z-50 border-b border-ink-foreground/10 bg-ink transition-shadow duration-500",
+        scrolled && "shadow-[0_1px_0_0_color-mix(in_oklab,var(--gold)_25%,transparent)]",
+      )}
+    >
       <a
         href="#main"
         className="label-luxe sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:bg-background focus:px-4 focus:py-2"
@@ -117,45 +130,11 @@ export function Navigation() {
         {t.nav.skipToContent}
       </a>
 
-      <div className="container-luxe flex h-24 items-center justify-between gap-4 lg:h-28 xl:gap-8">
+      {/* Mobile bar */}
+      <div className="container-luxe flex h-20 items-center justify-between gap-4 lg:hidden">
         <a href="#top" aria-label={`${t.brand.name} ${t.brand.by}`} className="shrink-0">
-          <Wordmark tone="onInk" size="xl" className="items-start" />
+          <Wordmark tone="onInk" size="lg" className="items-start" />
         </a>
-
-        <nav aria-label="Primary" className="hidden min-w-0 flex-1 justify-center lg:flex">
-          <ul className="flex items-center gap-4 xl:gap-4 2xl:gap-7">
-            {links.map((link) => {
-              const active = isActive(link.section);
-              return (
-                <li key={link.section}>
-                  <a
-                    href={link.href}
-                    aria-current={active ? "true" : undefined}
-                    className={cn(
-                      "relative inline-flex min-h-11 items-center whitespace-nowrap font-sans text-[0.625rem] font-normal uppercase tracking-[0.16em] transition-colors duration-300 after:absolute after:bottom-2 after:left-0 after:h-px after:bg-gold after:transition-all after:duration-500 after:ease-out xl:text-[0.6875rem] xl:tracking-[0.18em]",
-                      active
-                        ? "text-gold-soft after:w-full"
-                        : "text-white/70 after:w-0 hover:text-white hover:after:w-full",
-                    )}
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
-
-        <div className="hidden items-center gap-4 lg:flex xl:gap-6">
-          <LanguageSwitcher tone="onInk" className="hidden xl:flex" />
-          <BookingCta
-            variant="onInk"
-            size="sm"
-            label={t.common.bookNow}
-            className="whitespace-nowrap px-4 tracking-[0.2em] transition-all duration-300 hover:border-gold hover:bg-gold/15 xl:px-5"
-          />
-        </div>
-
         <button
           ref={menuButtonRef}
           type="button"
@@ -163,14 +142,92 @@ export function Navigation() {
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={t.nav.open}
-          className="label-luxe flex min-h-11 min-w-11 cursor-pointer items-center justify-end gap-3 text-white transition-colors duration-300 lg:hidden"
+          className="label-luxe flex min-h-11 min-w-11 cursor-pointer items-center justify-end gap-3 text-ink-foreground"
         >
-          <span aria-hidden="true" className="flex h-2.5 w-6 flex-col justify-between">
-            <span className="block h-px w-full bg-white" />
-            <span className="block h-px w-4/5 bg-white" />
-          </span>
           <span className="sr-only sm:not-sr-only">{t.nav.menu}</span>
+          <span aria-hidden="true" className="flex h-2.5 w-6 flex-col justify-between">
+            <span className="block h-px w-full bg-ink-foreground" />
+            <span className="ml-auto block h-px w-4/5 bg-ink-foreground" />
+          </span>
         </button>
+      </div>
+
+      {/* Desktop: centred crest above a ruled navigation row */}
+      <div className="hidden lg:block">
+        <div
+          className={cn(
+            "grid overflow-hidden transition-[grid-template-rows,opacity] duration-500 ease-out",
+            scrolled ? "grid-rows-[0fr] opacity-0" : "grid-rows-[1fr] opacity-100",
+          )}
+          aria-hidden={scrolled}
+        >
+          <div className="min-h-0">
+            <div className="relative flex items-center justify-center py-6">
+              <a
+                href="#top"
+                tabIndex={scrolled ? -1 : 0}
+                aria-label={`${t.brand.name} ${t.brand.by}`}
+              >
+                <Wordmark tone="onInk" size="xl" />
+              </a>
+              <LanguageSwitcher
+                tone="onInk"
+                className="absolute top-1/2 right-[var(--gutter,2.5rem)] -translate-y-1/2 pr-10"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="flex h-14 items-stretch border-t border-ink-foreground/15">
+          <div className="flex w-48 shrink-0 items-center pl-10 xl:w-60">
+            <a
+              href="#top"
+              tabIndex={scrolled ? 0 : -1}
+              aria-hidden={!scrolled}
+              className={cn(
+                "transition-opacity duration-500",
+                scrolled ? "opacity-100" : "pointer-events-none opacity-0",
+              )}
+            >
+              <Wordmark tone="onInk" size="md" className="items-start" />
+            </a>
+          </div>
+
+          <nav aria-label="Primary" className="flex min-w-0 flex-1 justify-center">
+            <ul className="flex items-stretch gap-7 xl:gap-10">
+              {links.map((link) => {
+                const active = isActive(link.section);
+                return (
+                  <li key={link.section} className="flex">
+                    <a
+                      href={link.href}
+                      aria-current={active ? "true" : undefined}
+                      className={cn(
+                        "relative inline-flex items-center whitespace-nowrap font-sans text-[0.75rem] font-light uppercase tracking-[0.2em] transition-colors duration-300 after:absolute after:bottom-0 after:left-1/2 after:h-px after:-translate-x-1/2 after:bg-gold after:transition-all after:duration-500",
+                        active
+                          ? "text-gold-soft after:w-full"
+                          : "text-ink-foreground/75 after:w-0 hover:text-ink-foreground",
+                      )}
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+
+          <a
+            href={`#${SECTIONS.booking}`}
+            className="group flex w-48 shrink-0 items-center justify-center gap-3 border-l border-ink-foreground/15 font-sans text-[0.6875rem] uppercase tracking-[0.22em] text-ink-foreground transition-colors duration-300 hover:text-gold-soft xl:w-60"
+          >
+            {t.nav.book}
+            <span
+              aria-hidden="true"
+              className="inline-block h-2 w-2 rotate-45 border-t border-r border-current transition-transform duration-300 group-hover:translate-x-1"
+            />
+          </a>
+        </div>
       </div>
 
       {/* Full-screen mobile overlay */}
