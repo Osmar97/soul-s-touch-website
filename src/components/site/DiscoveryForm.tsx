@@ -66,7 +66,7 @@ export function DiscoveryForm() {
         p_source: trimmed.source,
         p_name: trimmed.name || undefined,
         p_email: looksLikeEmail ? trimmed.contact : undefined,
-        p_phone: looksLikeEmail ? null : trimmed.contact,
+        p_phone: looksLikeEmail ? undefined : trimmed.contact,
         p_referrer: isFriend ? trimmed.referrer : undefined,
       });
       if (error) throw error;
