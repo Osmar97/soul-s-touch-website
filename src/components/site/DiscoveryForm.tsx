@@ -64,10 +64,9 @@ export function DiscoveryForm() {
       const looksLikeEmail = trimmed.contact.includes("@");
       const { error } = await supabase.rpc("record_discovery", {
         p_source: trimmed.source,
-        p_name: trimmed.name || undefined,
-        p_email: looksLikeEmail ? trimmed.contact : undefined,
-        p_phone: looksLikeEmail ? undefined : trimmed.contact,
-        p_referrer: isFriend ? trimmed.referrer : undefined,
+        ...(trimmed.name ? { p_name: trimmed.name } : {}),
+        ...(looksLikeEmail ? { p_email: trimmed.contact } : { p_phone: trimmed.contact }),
+        ...(isFriend && trimmed.referrer ? { p_referrer: trimmed.referrer } : {}),
       });
       if (error) throw error;
 
