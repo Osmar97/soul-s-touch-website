@@ -17,7 +17,7 @@ import { ButtonLink } from "./Button";
  */
 export function PersonalizedMassage() {
   const t = useT();
-  const revealRef = useReveal<HTMLElement>();
+  const revealRef = useReveal<HTMLDivElement>();
   const config = PERSONALIZED_MASSAGE;
   const hasDetails = config.details.length > 0;
 

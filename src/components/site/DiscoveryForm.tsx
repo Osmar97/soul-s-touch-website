@@ -64,10 +64,9 @@ export function DiscoveryForm() {
       const looksLikeEmail = trimmed.contact.includes("@");
       const { error } = await supabase.rpc("record_discovery", {
         p_source: trimmed.source,
-        p_name: trimmed.name || null,
-        p_email: looksLikeEmail ? trimmed.contact : null,
-        p_phone: looksLikeEmail ? null : trimmed.contact,
-        p_referrer: isFriend ? trimmed.referrer : null,
+        ...(trimmed.name ? { p_name: trimmed.name } : {}),
+        ...(looksLikeEmail ? { p_email: trimmed.contact } : { p_phone: trimmed.contact }),
+        ...(isFriend && trimmed.referrer ? { p_referrer: trimmed.referrer } : {}),
       });
       if (error) throw error;
 
@@ -211,4 +210,4 @@ export function DiscoveryForm() {
 }
 
 /** Kept for parity with the other form modules that export their dictionary keys. */
-export type DiscoveryDictionary = Dictionary["discovery"];
+export type DiscoveryDictionary = ReturnType<typeof useT>["discovery"];
