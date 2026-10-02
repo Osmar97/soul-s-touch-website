@@ -28,6 +28,7 @@ export function Navigation() {
   const t = useT();
   const [open, setOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>(SECTIONS.hero);
+  const [scrolled, setScrolled] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
@@ -70,6 +71,13 @@ export function Navigation() {
     for (const element of observed) observer.observe(element);
     return () => observer.disconnect();
     // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 48);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {
@@ -181,7 +189,7 @@ export function Navigation() {
                 scrolled ? "opacity-100" : "pointer-events-none opacity-0",
               )}
             >
-              <Wordmark tone="onInk" size="sm" className="items-start" />
+              <Wordmark tone="onInk" size="md" className="items-start" />
             </a>
           </div>
 
