@@ -102,12 +102,17 @@ export function Services() {
                 ) : null}
               </div>
 
-              <h3 className="mt-7 font-serif text-2xl leading-snug text-foreground sm:text-[1.75rem]">
+              <h3 className="mt-7 font-serif text-xl uppercase leading-snug tracking-[0.12em] text-foreground sm:text-[1.35rem]">
                 {treatment.name}
               </h3>
               <p className="mt-3 font-serif text-lg italic leading-snug text-muted-foreground">
                 {treatment.tagline}
               </p>
+              {treatment.description !== treatment.tagline ? (
+                <p className="mt-6 text-sm leading-[1.95] text-muted-foreground">
+                  {treatment.description}
+                </p>
+              ) : null}
 
               <dl className="mt-8 border-t border-gold/20">
                 {treatment.options.map((option) => (
@@ -120,12 +125,6 @@ export function Services() {
                   </div>
                 ))}
               </dl>
-
-              {treatment.description !== treatment.tagline ? (
-                <p className="mt-7 text-sm leading-[1.95] text-muted-foreground">
-                  {treatment.description}
-                </p>
-              ) : null}
 
               {treatment.includes.length > 0 ? (
                 <div className="mt-7">
