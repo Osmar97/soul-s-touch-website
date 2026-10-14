@@ -69,6 +69,35 @@ export function PersonalizedMassage() {
               {t.personalized.body}
             </p>
 
+            {/* Optional extras — requested in advance, priced with the session. */}
+            <div className="mt-11 max-w-lg">
+              <h3 className="label-luxe text-gold-soft">{t.personalized.extrasTitle}</h3>
+              <p className="mt-5 text-sm leading-[1.95] text-ink-foreground/70">
+                {t.personalized.extrasBody}
+              </p>
+              <ul className="mt-7 border-t border-ink-foreground/15">
+                {[
+                  t.personalized.extrasItemOne,
+                  t.personalized.extrasItemTwo,
+                  t.personalized.extrasItemThree,
+                ].map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-baseline gap-4 border-b border-ink-foreground/15 py-3.5 font-serif text-lg text-ink-foreground sm:text-xl"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="mt-2.5 h-px w-5 shrink-0 bg-gold/60 sm:w-6"
+                    />
+                    <span className="min-w-0">{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-6 text-xs leading-[1.9] text-ink-foreground/55">
+                {t.personalized.extrasNote}
+              </p>
+            </div>
+
             {hasDetails ? (
               <dl className="mt-9 border-t border-ink-foreground/15">
                 {config.details.map((detail) => (

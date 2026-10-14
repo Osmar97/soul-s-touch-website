@@ -222,9 +222,17 @@ export const pt: Dictionary = {
     title: "Um tratamento feito à sua medida",
     body:
       "Cada sessão pode ser adaptada a si. Escolha a pressão, indique as áreas que precisam de atenção e peça um ajuste a qualquer momento — o tratamento é moldado ao que o seu corpo precisa nesse dia.",
+    extrasTitle: "Peça um extra",
+    extrasBody:
+      "Pode também pedir pequenos extras, para si ou para quem mais gosta — uma massagem surpresa para festejar um aniversário, uma data especial, ou simplesmente porque sim.",
+    extrasItemOne: "Pequena decoração ou adereços",
+    extrasItemTwo: "Uma bebida à sua espera",
+    extrasItemThree: "Um mimo doce ou salgado",
+    extrasNote:
+      "Os extras têm de ser pedidos com antecedência, e o valor da massagem é ajustado ao que pedir.",
     imageAlt:
       "Uma maca de massagem iluminada suavemente junto a uma janela ampla, vestida com linho creme e uma manta dobrada",
-    cta: "Reserve o seu momento",
+    cta: "Personalize o seu momento",
   },
   clientExperience: {
     eyebrow: "Cuidado com o cliente",

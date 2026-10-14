@@ -218,9 +218,17 @@ export const en = {
     title: "A treatment shaped around you",
     body:
       "Every session can be adapted to you. Choose the pressure, tell us which areas need attention and ask for a change at any point — the treatment is shaped around what your body needs that day.",
+    extrasTitle: "Add something extra",
+    extrasBody:
+      "You can also ask for little extras, for yourself or for someone you love — a surprise massage to celebrate a birthday, a date that matters, or simply because.",
+    extrasItemOne: "Small decoration or props",
+    extrasItemTwo: "A drink waiting for you",
+    extrasItemThree: "A sweet or savoury treat",
+    extrasNote:
+      "Extras need to be requested in advance, and the value of your massage is adjusted to what you would like to add.",
     imageAlt:
       "A softly lit massage table beside a wide window, dressed in cream linen with a folded throw",
-    cta: "Book your moment",
+    cta: "Personalise your moment",
   },
   clientExperience: {
     eyebrow: "Client care",
