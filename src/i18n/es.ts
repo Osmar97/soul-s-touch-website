@@ -224,9 +224,17 @@ export const es: Dictionary = {
     title: "Un tratamiento hecho a tu medida",
     body:
       "Cada sesión puede adaptarse a ti. Elige la presión, indica las zonas que necesitan atención y pide un cambio en cualquier momento — el tratamiento se adapta a lo que tu cuerpo necesita ese día.",
+    extrasTitle: "Añade un extra",
+    extrasBody:
+      "También puedes pedir pequeños extras, para ti o para quien quieras — un masaje sorpresa para celebrar un cumpleaños, una fecha señalada, o simplemente porque sí.",
+    extrasItemOne: "Pequeña decoración o atrezo",
+    extrasItemTwo: "Una bebida esperándote",
+    extrasItemThree: "Un capricho dulce o salado",
+    extrasNote:
+      "Los extras hay que pedirlos con antelación, y el importe del masaje se ajusta a lo que añadas.",
     imageAlt:
       "Una camilla de masaje iluminada suavemente junto a una ventana amplia, vestida con lino crema y una manta doblada",
-    cta: "Reserva tu momento",
+    cta: "Personaliza tu momento",
   },
   clientExperience: {
     eyebrow: "Cuidado al cliente",
