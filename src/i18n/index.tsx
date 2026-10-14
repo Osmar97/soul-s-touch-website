@@ -1,5 +1,5 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
-import type { ReactNode } from "react";
+import type { Context, ReactNode } from "react";
 
 import { en, type Dictionary } from "./en";
 import { pt } from "./pt";
@@ -22,7 +22,13 @@ type I18nValue = {
   t: Dictionary;
 };
 
-const I18nContext = createContext<I18nValue | null>(null);
+// Keep a single context instance across hot reloads so a re-evaluated module
+// never leaves mounted consumers looking at a different context than the provider.
+const globalStore = globalThis as typeof globalThis & {
+  __stI18nContext?: React.Context<I18nValue | null>;
+};
+const I18nContext =
+  globalStore.__stI18nContext ?? (globalStore.__stI18nContext = createContext<I18nValue | null>(null));
 
 export function I18nProvider({ children }: { children: ReactNode }) {
   // Always start at "en" so SSR and hydration match; a stored/browser
