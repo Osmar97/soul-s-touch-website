@@ -126,12 +126,6 @@ export function Services() {
                 ))}
               </dl>
 
-              {treatment.description !== treatment.tagline ? (
-                <p className="mt-7 text-sm leading-[1.95] text-muted-foreground">
-                  {treatment.description}
-                </p>
-              ) : null}
-
               {treatment.includes.length > 0 ? (
                 <div className="mt-7">
                   <h4 className="label-luxe text-foreground">{t.services.includesLabel}</h4>
