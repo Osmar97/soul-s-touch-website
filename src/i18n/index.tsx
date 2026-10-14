@@ -25,7 +25,7 @@ type I18nValue = {
 // Keep a single context instance across hot reloads so a re-evaluated module
 // never leaves mounted consumers looking at a different context than the provider.
 const globalStore = globalThis as typeof globalThis & {
-  __stI18nContext?: React.Context<I18nValue | null>;
+  __stI18nContext?: Context<I18nValue | null>;
 };
 const I18nContext =
   globalStore.__stI18nContext ?? (globalStore.__stI18nContext = createContext<I18nValue | null>(null));
