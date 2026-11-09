@@ -71,6 +71,10 @@ export const es: Dictionary = {
     contactBody:
       "La disponibilidad online no siempre refleja todas las citas posibles. Si necesitas una hora fuera del calendario online, contáctanos directamente y veremos qué podemos organizar.",
     contactCta: "Contáctanos",
+    quickAsk: "¿Necesitas una cita para hoy o tienes una pregunta rápida?",
+    quickAskCta: "Pregunta a Dani por WhatsApp",
+    quickAskMessage:
+      "Hola Dani, me gustaría reservar un masaje. ¿Tienes disponibilidad para (día/hora)?",
   },
   reviews: {
     eyebrow: "Palabras de clientes",

@@ -15,6 +15,7 @@ import { useT } from "@/i18n";
 export function Booking() {
   const t = useT();
   const whatsappUrl = buildWhatsAppUrl();
+  const quickAskUrl = buildWhatsAppUrl(t.booking.quickAskMessage);
 
   const info = [
     { label: t.booking.noticeLabel, body: t.booking.noticeBody },
@@ -37,6 +38,20 @@ export function Booking() {
 
       <div className="mx-auto mt-14 max-w-3xl">
         <SetmoreBooking />
+
+        {quickAskUrl ? (
+          <p className="mt-8 text-center text-sm leading-[1.9] text-ink-foreground/75">
+            {t.booking.quickAsk}{" "}
+            <a
+              href={quickAskUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-11 items-center text-gold-soft underline decoration-gold/50 underline-offset-4 transition-colors hover:text-ink-foreground"
+            >
+              {t.booking.quickAskCta} ›
+            </a>
+          </p>
+        ) : null}
 
         <DiscoveryForm />
 
