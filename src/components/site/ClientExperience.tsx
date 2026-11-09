@@ -1,135 +1,11 @@
-import { useEffect, useRef } from "react";
-import type { CSSProperties } from "react";
-
+/** Client care guidelines: before, during, boundaries and privacy — plain lists. */
 import { SECTIONS } from "@/config/site";
 import { useT } from "@/i18n";
 
 import { SectionHeading } from "./SectionHeading";
 
-/**
- * Client care guidelines: before, during, boundaries and privacy.
- *
- * Desktop (>=768px, no reduced-motion preference) runs as a pinned
- * editorial storytelling stage:
- *
- *   - the outer track is 300vh tall and the inner stage sticks for its length
- *   - the LEFT column never moves: it is the editorial anchor
- *   - the RIGHT column progresses through three states, driven purely by the
- *     user's scroll progress through the track
- *
- * The scroll driver writes CSS custom properties (`--pos`, `--o`) directly on
- * the DOM inside a single requestAnimationFrame loop — no React re-renders per
- * frame, no animation library.
- *
- * Below 768px, and whenever `prefers-reduced-motion: reduce` is set, the whole
- * section falls back to plain document flow with every state visible.
- */
-
-const PIN_MIN_WIDTH = 768;
-
-/** Scroll progress (0..1) → continuous state position (0..2), eased. */
-function progressToPosition(progress: number): number {
-  // state 1 rests until 26%, transitions to state 2 across 26–42%,
-  // rests until 60%, transitions to state 3 across 60–76%, then rests.
-  if (progress <= 0.26) return 0;
-  if (progress < 0.42) {
-    const t = (progress - 0.26) / 0.16;
-    return t * t * (3 - 2 * t);
-  }
-  if (progress <= 0.6) return 1;
-  if (progress < 0.76) {
-    const t = (progress - 0.6) / 0.16;
-    return 1 + (t * t * (3 - 2 * t));
-  }
-  return 2;
-}
-
-function clamp01(value: number): number {
-  if (value < 0) return 0;
-  if (value > 1) return 1;
-  return value;
-}
-
 export function ClientExperience() {
   const t = useT();
-
-  const trackRef = useRef<HTMLDivElement>(null);
-  const stageRef = useRef<HTMLDivElement>(null);
-  const listRef = useRef<HTMLDivElement>(null);
-  const stateRefs = useRef<(HTMLElement | null)[]>([]);
-
-  useEffect(() => {
-    const track = trackRef.current;
-    const stage = stageRef.current;
-    const list = listRef.current;
-    if (!track || !stage || !list) return;
-
-    const pinQuery = window.matchMedia(`(min-width: ${PIN_MIN_WIDTH}px)`);
-    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-
-    let frame = 0;
-
-    const paint = () => {
-      frame = 0;
-      const pinned = pinQuery.matches && !motionQuery.matches;
-
-      if (!pinned) {
-        list.style.removeProperty("--pos");
-        for (const state of stateRefs.current) state?.style.removeProperty("--o");
-        return;
-      }
-
-      const travel = track.offsetHeight - stage.offsetHeight;
-      const passed = -track.getBoundingClientRect().top;
-      const progress = travel > 0 ? clamp01(passed / travel) : 0;
-      const position = progressToPosition(progress);
-
-      list.style.setProperty("--pos", position.toFixed(4));
-
-      for (let index = 0; index < stateRefs.current.length; index += 1) {
-        const state = stateRefs.current[index];
-        if (!state) continue;
-        const distance = Math.min(1, Math.abs(index - position));
-        // Past states fade a touch further than upcoming ones so the eye is
-        // always pulled to the state currently in the focal position.
-        const opacity = index <= position ? 1 - 0.7 * distance : 1 - 0.66 * distance;
-        state.style.setProperty("--o", opacity.toFixed(3));
-      }
-    };
-
-    const schedule = () => {
-      if (frame) return;
-      frame = window.requestAnimationFrame(paint);
-    };
-
-    const onMotionChange = () => {
-      if (motionQuery.matches) {
-        if (frame) {
-          window.cancelAnimationFrame(frame);
-          frame = 0;
-        }
-        paint();
-      } else {
-        schedule();
-      }
-    };
-
-    paint();
-    window.addEventListener("scroll", schedule, { passive: true });
-    window.addEventListener("resize", schedule);
-    pinQuery.addEventListener("change", schedule);
-    motionQuery.addEventListener("change", onMotionChange);
-
-    return () => {
-      if (frame) window.cancelAnimationFrame(frame);
-      window.removeEventListener("scroll", schedule);
-      window.removeEventListener("resize", schedule);
-      pinQuery.removeEventListener("change", schedule);
-      motionQuery.removeEventListener("change", onMotionChange);
-      list.style.removeProperty("--pos");
-      for (const state of stateRefs.current) state?.style.removeProperty("--o");
-    };
-  }, []);
 
   const beforeItems = [
     t.clientExperience.beforeItem1,
@@ -158,8 +34,8 @@ export function ClientExperience() {
       className="story-section"
     >
       {/* Scroll track — its height is the storytelling distance. */}
-      <div ref={trackRef} className="story-track">
-        <div ref={stageRef} className="story-stage">
+      <div className="pt-20 md:pt-28 lg:pt-36">
+        <div>
           <div className="container-luxe grid w-full gap-14 md:grid-cols-[45fr_55fr] md:gap-10 lg:gap-16 xl:gap-24">
             {/* ── LEFT — the editorial anchor, never moves ─────────────── */}
             <div>
@@ -203,17 +79,10 @@ export function ClientExperience() {
                 {t.clientExperience.duringIntro}
               </p>
 
-              <div className="story-window mt-8 lg:mt-10">
-                <div ref={listRef} className="story-list">
-                  {states.map((state, position) => (
-                    <article
-                      key={state.index}
-                      ref={(element) => {
-                        stateRefs.current[position] = element;
-                      }}
-                      className="story-state"
-                      style={{ "--i": position } as CSSProperties}
-                    >
+              <div className="mt-8 lg:mt-10">
+                <ol className="border-t border-gold/20">
+                  {states.map((state) => (
+                    <li key={state.index} className="border-b border-gold/20 py-7">
                       <div className="flex items-center gap-5">
                         <span className="label-luxe text-gold-deep">{state.index}</span>
                         <span className="h-px flex-1 bg-gold/25" aria-hidden="true" />
@@ -227,9 +96,9 @@ export function ClientExperience() {
                           {state.body}
                         </p>
                       </div>
-                    </article>
+                    </li>
                   ))}
-                </div>
+                </ol>
               </div>
             </div>
           </div>
