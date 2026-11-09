@@ -93,7 +93,7 @@ export function PersonalizedMassage() {
                   </li>
                 ))}
               </ul>
-              <p className="mt-6 text-xs leading-[1.9] text-ink-foreground/55">
+              <p className="mt-6 text-xs leading-[1.9] text-ink-foreground/70">
                 {t.personalized.extrasNote}
               </p>
             </div>

@@ -1,5 +1,9 @@
 # Roadmap
 
 - [x] 2. WhatsApp quick-ask shortcut in Booking section
-- [ ] 1. Service areas + currency (waiting on user: real areas, travel fee, NOK vs EUR)
-- [ ] Rest: contrast on subtle text, trust points near booking, form validation refactor, split admin customers page, translation completeness test
+- [x] 1. Location (Norway, client's location) + NOK with ≈ EUR
+- [x] Contrast on faint text
+- [x] Translation completeness + price test
+- [ ] Form validation refactor (review, discovery, loyalty forms)
+- [ ] Split admin customers page into smaller parts
+- [ ] Trust points beside the booking button (needs user's real wording)

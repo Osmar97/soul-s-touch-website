@@ -19,9 +19,14 @@ export const BOOKING_URL: string | null = rawBookingUrl ? rawBookingUrl : null;
 
 export const isBookingConfigured = BOOKING_URL !== null;
 
-/** Consistent NOK price formatting across the site. */
+/**
+ * Prices are set in NOK; an approximate euro value is shown alongside.
+ * Update NOK_PER_EUR when the exchange rate moves noticeably.
+ */
+export const NOK_PER_EUR = 11.7;
+
 export function formatNok(amount: number): string {
-  return `${amount} NOK`;
+  return `${amount} NOK · ≈ €${Math.round(amount / NOK_PER_EUR)}`;
 }
 
 /**

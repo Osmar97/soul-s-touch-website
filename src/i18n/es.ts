@@ -2,9 +2,9 @@ import type { Dictionary } from "./en";
 
 export const es: Dictionary = {
   meta: {
-    title: "Soul's Touch by Dani — Masaje a Domicilio en Lisboa",
+    title: "Soul's Touch by Dani — Masaje a Domicilio en Noruega",
     description:
-      "Soul's Touch by Dani es un servicio de masaje a domicilio en Lisboa. Dani se desplaza a tu casa con camilla, sábanas, toallas y aceites — todo para un tratamiento tranquilo y profesional.",
+      "Soul's Touch by Dani es un servicio de masaje a domicilio en Noruega. Dani se desplaza a tu casa con camilla, sábanas, toallas y aceites — todo para un tratamiento tranquilo y profesional.",
   },
   nav: {
     home: "Inicio",
@@ -25,7 +25,7 @@ export const es: Dictionary = {
   brand: {
     name: "Soul's Touch",
     by: "by Dani",
-    tagline: "Masaje a domicilio en Lisboa",
+    tagline: "Masaje a domicilio en Noruega",
   },
   hero: {
     eyebrow: "Masaje a domicilio • Soul's Touch by Dani",

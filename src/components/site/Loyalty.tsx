@@ -114,7 +114,7 @@ export function Loyalty() {
           <div className="border border-foreground/15 bg-ink px-6 py-8 text-ink-foreground sm:px-9 sm:py-10">
             <div className="flex flex-wrap items-baseline justify-between gap-3">
               <p className="label-luxe text-gold-soft">{t.loyalty.cardTitle}</p>
-              <p className="label-luxe text-ink-foreground/50">{t.brand.name}</p>
+              <p className="label-luxe text-ink-foreground/65">{t.brand.name}</p>
             </div>
 
             <p className="mt-6 font-serif text-2xl leading-snug sm:text-3xl">
