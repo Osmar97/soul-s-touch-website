@@ -69,6 +69,10 @@ export const en = {
     contactBody:
       "Online availability does not always reflect every possible appointment. If you need a time outside the online schedule, contact us directly and we will see what we can arrange.",
     contactCta: "Contact us",
+    quickAsk: "Need a same-day time or have a quick question?",
+    quickAskCta: "Ask Dani on WhatsApp",
+    quickAskMessage:
+      "Hello Dani, I would like to book a massage. Do you have availability on (date/time)?",
   },
   reviews: {
     eyebrow: "Words from clients",
