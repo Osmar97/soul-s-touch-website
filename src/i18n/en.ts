@@ -1,8 +1,8 @@
 export const en = {
   meta: {
-    title: "Soul's Touch by Dani — Home Massage in Lisbon",
+    title: "Soul's Touch by Dani — Home Massage in Norway",
     description:
-      "Soul's Touch by Dani is a mobile massage service in Lisbon. Dani comes to your home with table, linens, towels and oils — everything for a calm, professional treatment.",
+      "Soul's Touch by Dani is a mobile massage service in Norway. Dani comes to your home with table, linens, towels and oils — everything for a calm, professional treatment.",
   },
   nav: {
     home: "Home",
@@ -23,7 +23,7 @@ export const en = {
   brand: {
     name: "Soul's Touch",
     by: "by Dani",
-    tagline: "Home massage in Lisbon",
+    tagline: "Home massage in Norway",
   },
   hero: {
     eyebrow: "Home massage • Soul's Touch by Dani",
