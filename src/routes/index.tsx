@@ -56,11 +56,9 @@ export const Route = createFileRoute("/")({
             "@type": "HealthAndBeautyBusiness",
             name: SITE.fullName,
             description: DESCRIPTION,
-            areaServed: { "@type": "City", name: SITE.city },
+            areaServed: { "@type": "Country", name: SITE.city },
             address: {
               "@type": "PostalAddress",
-              addressLocality: SITE.city,
-              addressRegion: SITE.region,
               addressCountry: SITE.country,
             },
             availableService: {
