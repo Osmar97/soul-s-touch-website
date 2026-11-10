@@ -1,6 +1,8 @@
 import { useState } from "react";
 
 import { Button } from "./Button";
+import { FieldError, invalidClass } from "./FieldError";
+import { discoverySchema, fieldErrors, type FormErrorKey } from "@/lib/schemas/forms";
 import { useT } from "@/i18n";
 import { supabase } from "@/integrations/supabase/client";
 import { cn } from "@/lib/utils";
@@ -33,6 +35,19 @@ export function DiscoveryForm() {
   const [contact, setContact] = useState("");
   const [referrer, setReferrer] = useState("");
   const [status, setStatus] = useState<SubmitState>("idle");
+  const [errors, setErrors] = useState<Record<string, FormErrorKey>>({});
+  const err = (field: string) => (errors[field] ? t.forms[errors[field]] : undefined);
+  const a11y = (field: string, id: string, hint?: string) => ({
+    "aria-invalid": errors[field] ? true : undefined,
+    "aria-describedby": [errors[field] ? `${id}-error` : "", hint ?? ""].filter(Boolean).join(" ") || undefined,
+  });
+  const clear = (field: string) =>
+    setErrors((prev) => {
+      if (!prev[field]) return prev;
+      const next = { ...prev };
+      delete next[field];
+      return next;
+    });
 
   const sourceId = "discovery-source";
   const nameId = "discovery-name";
@@ -54,8 +69,11 @@ export function DiscoveryForm() {
       referrer: referrer.trim(),
     };
 
-    if (!trimmed.source || !trimmed.contact || (isFriend && !trimmed.referrer)) {
+    const found = fieldErrors(discoverySchema, trimmed);
+    setErrors(found);
+    if (Object.keys(found).length) {
       setStatus("invalid");
+      document.getElementById(`discovery-${Object.keys(found)[0]}`)?.focus();
       return;
     }
 
@@ -100,7 +118,7 @@ export function DiscoveryForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="mt-14 border border-ink-foreground/15 px-6 py-8 sm:px-8 sm:py-9">
+    <form noValidate onSubmit={handleSubmit} className="mt-14 border border-ink-foreground/15 px-6 py-8 sm:px-8 sm:py-9">
       <p className="label-luxe text-gold-soft">{t.discovery.title}</p>
       <p className="mt-4 max-w-xl text-sm leading-[1.9] text-ink-foreground/70">
         {t.discovery.intro}
@@ -113,10 +131,12 @@ export function DiscoveryForm() {
           </label>
           <select
             id={sourceId}
-            className={cn(fieldClass, "cursor-pointer appearance-none")}
+            className={cn(fieldClass, "cursor-pointer appearance-none", invalidClass(!!errors.source, "ink"))}
             value={source}
+            {...a11y("source", sourceId)}
             onChange={(event) => {
               setSource(event.target.value);
+              clear("source");
               if (status !== "sending") setStatus("idle");
             }}
             required
@@ -128,6 +148,7 @@ export function DiscoveryForm() {
               </option>
             ))}
           </select>
+          <FieldError id={`${sourceId}-error`} message={err("source")} tone="ink" />
         </div>
 
         <div>
@@ -154,17 +175,20 @@ export function DiscoveryForm() {
             id={contactId}
             type="text"
             autoComplete="email"
-            className={fieldClass}
+            className={cn(fieldClass, invalidClass(!!errors.contact, "ink"))}
             placeholder={t.discovery.contactPlaceholder}
             value={contact}
+            {...a11y("contact", contactId, `${contactId}-hint`)}
             onChange={(event) => {
               setContact(event.target.value);
+              clear("contact");
               if (status !== "sending") setStatus("idle");
             }}
             maxLength={160}
             required
           />
-          <span className="mt-2 block text-xs leading-relaxed text-ink-foreground/70">
+          <FieldError id={`${contactId}-error`} message={err("contact")} tone="ink" />
+          <span id={`${contactId}-hint`} className="mt-2 block text-xs leading-relaxed text-ink-foreground/70">
             {t.discovery.contactHint}
           </span>
         </div>
@@ -177,17 +201,20 @@ export function DiscoveryForm() {
             <input
               id={referrerId}
               type="text"
-              className={fieldClass}
+              className={cn(fieldClass, invalidClass(!!errors.referrer, "ink"))}
               placeholder={t.discovery.referrerPlaceholder}
               value={referrer}
+              {...a11y("referrer", referrerId, `${referrerId}-hint`)}
               onChange={(event) => {
                 setReferrer(event.target.value);
+                clear("referrer");
                 if (status !== "sending") setStatus("idle");
               }}
               maxLength={160}
               required
             />
-            <span className="mt-2 block text-xs leading-relaxed text-ink-foreground/70">
+            <FieldError id={`${referrerId}-error`} message={err("referrer")} tone="ink" />
+            <span id={`${referrerId}-hint`} className="mt-2 block text-xs leading-relaxed text-ink-foreground/70">
               {t.discovery.referrerHint}
             </span>
           </div>
@@ -196,7 +223,7 @@ export function DiscoveryForm() {
 
       {status === "invalid" || status === "error" ? (
         <p role="alert" className="mt-6 text-sm text-gold-soft">
-          {status === "invalid" ? t.discovery.required : t.discovery.error}
+          {status === "invalid" ? t.forms.summary : t.discovery.error}
         </p>
       ) : null}
 

@@ -74,6 +74,17 @@ export const en = {
     quickAskMessage:
       "Hello Dani, I would like to book a massage. Do you have availability on (date/time)?",
   },
+  forms: {
+    errName: "Please add your name.",
+    errRating: "Please choose a rating from 1 to 5.",
+    errBody: "Please write a few words (at least 10 characters).",
+    errEmail: "This email doesn't look quite right.",
+    errSource: "Please choose an option.",
+    errContact: "Please add a valid email or phone number.",
+    errReferrer: "Please tell us who recommended you.",
+    errIdentifier: "Please enter the email or phone you booked with.",
+    summary: "A few details need your attention.",
+  },
   reviews: {
     eyebrow: "Words from clients",
     title: "What clients say",
