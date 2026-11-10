@@ -76,6 +76,17 @@ export const es: Dictionary = {
     quickAskMessage:
       "Hola Dani, me gustaría reservar un masaje. ¿Tienes disponibilidad para (día/hora)?",
   },
+  forms: {
+    errName: "Indica tu nombre.",
+    errRating: "Elige una valoración del 1 al 5.",
+    errBody: "Escribe unas palabras (al menos 10 caracteres).",
+    errEmail: "Este email no parece correcto.",
+    errSource: "Elige una opción.",
+    errContact: "Indica un email o teléfono válido.",
+    errReferrer: "Dinos quién te recomendó.",
+    errIdentifier: "Indica el email o teléfono con el que reservaste.",
+    summary: "Algunos datos necesitan tu atención.",
+  },
   reviews: {
     eyebrow: "Palabras de clientes",
     title: "Lo que dicen los clientes",
