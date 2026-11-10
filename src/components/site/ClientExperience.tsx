@@ -31,7 +31,7 @@ export function ClientExperience() {
     <section
       id={SECTIONS.clientExperience}
       aria-labelledby="client-experience-heading"
-      className="story-section"
+      className="pb-20 md:pb-28 lg:pb-36"
     >
       {/* Scroll track — its height is the storytelling distance. */}
       <div className="pt-20 md:pt-28 lg:pt-36">
@@ -106,7 +106,7 @@ export function ClientExperience() {
       </div>
 
       {/* ── Professional boundaries + privacy — normal document flow ──── */}
-      <div className="container-luxe story-after mt-16 border-t border-gold/20 pt-16 md:mt-20 md:pt-20">
+      <div className="container-luxe mt-16 border-t border-gold/20 pt-16 md:mt-20 md:pt-20">
         <div className="grid gap-12 lg:grid-cols-[1fr_minmax(0,0.75fr)] lg:gap-20">
           <div>
             <h3 className="font-serif text-2xl leading-snug text-foreground sm:text-3xl">
