@@ -1,6 +1,8 @@
 import { useState } from "react";
 
 import { Button } from "@/components/site/Button";
+import { FieldError, invalidClass } from "@/components/site/FieldError";
+import { fieldErrors, reviewSchema, type FormErrorKey } from "@/lib/schemas/forms";
 import { supabase } from "@/integrations/supabase/client";
 import { useI18n } from "@/i18n";
 import { cn } from "@/lib/utils";
@@ -18,6 +20,19 @@ export function ReviewForm({
   const [body, setBody] = useState("");
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "error" | "invalid">("idle");
+  const [errors, setErrors] = useState<Record<string, FormErrorKey>>({});
+  const err = (field: string) => (errors[field] ? t.forms[errors[field]] : undefined);
+  const a11y = (field: string, id: string, hint?: string) => ({
+    "aria-invalid": errors[field] ? true : undefined,
+    "aria-describedby": [errors[field] ? `${id}-error` : "", hint ?? ""].filter(Boolean).join(" ") || undefined,
+  });
+  const clear = (field: string) =>
+    setErrors((prev) => {
+      if (!prev[field]) return prev;
+      const next = { ...prev };
+      delete next[field];
+      return next;
+    });
   const nameId = "review-form-author";
   const bodyId = "review-form-body";
   const emailId = "review-form-email";
@@ -27,8 +42,12 @@ export function ReviewForm({
 
   async function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
-    if (!name.trim() || !body.trim() || rating < 1) {
+    const found = fieldErrors(reviewSchema, { name, rating, body, email });
+    setErrors(found);
+    if (Object.keys(found).length) {
       setStatus("invalid");
+      const first = Object.keys(found)[0];
+      document.getElementById(first === "rating" ? "review-form-rating-1" : `review-form-${first === "name" ? "author" : first}`)?.focus();
       return;
     }
     setStatus("sending");
@@ -49,7 +68,7 @@ export function ReviewForm({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="mx-auto mt-14 max-w-xl border-t border-border pt-10">
+    <form noValidate onSubmit={handleSubmit} className="mx-auto mt-14 max-w-xl border-t border-border pt-10">
       <p className="label-luxe text-gold-deep">{t.reviews.formTitle}</p>
       <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{t.reviews.formIntro}</p>
 
@@ -59,22 +78,31 @@ export function ReviewForm({
         </label>
         <input
           id={nameId}
-          className={fieldClass}
+          className={cn(fieldClass, invalidClass(!!errors.name))}
           value={name}
-          onChange={(e) => setName(e.target.value)}
+          onChange={(e) => {
+            setName(e.target.value);
+            clear("name");
+          }}
           maxLength={60}
           required
+          {...a11y("name", nameId)}
         />
+        <FieldError id={`${nameId}-error`} message={err("name")} />
       </div>
 
-      <fieldset className="mt-8">
+      <fieldset className="mt-8" aria-describedby={errors.rating ? "review-form-rating-error" : undefined}>
         <legend className="label-luxe text-muted-foreground">{t.reviews.fieldRating}</legend>
         <div className="mt-3 flex items-center gap-2">
           {[1, 2, 3, 4, 5].map((n) => (
             <button
               key={n}
+              id={`review-form-rating-${n}`}
               type="button"
-              onClick={() => setRating(n)}
+              onClick={() => {
+                setRating(n);
+                clear("rating");
+              }}
               aria-pressed={rating === n}
               aria-label={`${n} ${t.reviews.ratingLabel}`}
               className={cn(
@@ -88,6 +116,7 @@ export function ReviewForm({
             </button>
           ))}
         </div>
+        <FieldError id="review-form-rating-error" message={err("rating")} />
       </fieldset>
 
       <div className="mt-8">
@@ -96,12 +125,17 @@ export function ReviewForm({
         </label>
         <textarea
           id={bodyId}
-          className={cn(fieldClass, "min-h-32 resize-y leading-relaxed")}
+          className={cn(fieldClass, "min-h-32 resize-y leading-relaxed", invalidClass(!!errors.body))}
           value={body}
-          onChange={(e) => setBody(e.target.value)}
+          onChange={(e) => {
+            setBody(e.target.value);
+            clear("body");
+          }}
           maxLength={1200}
           required
+          {...a11y("body", bodyId)}
         />
+        <FieldError id={`${bodyId}-error`} message={err("body")} />
       </div>
 
       <div className="mt-8">
@@ -111,19 +145,25 @@ export function ReviewForm({
         <input
           id={emailId}
           type="email"
-          className={fieldClass}
+          autoComplete="email"
+          className={cn(fieldClass, invalidClass(!!errors.email))}
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => {
+            setEmail(e.target.value);
+            clear("email");
+          }}
           maxLength={160}
+          {...a11y("email", emailId, `${emailId}-hint`)}
         />
-        <span className="mt-2 block text-xs text-muted-foreground/80">
+        <FieldError id={`${emailId}-error`} message={err("email")} />
+        <span id={`${emailId}-hint`} className="mt-2 block text-xs text-muted-foreground">
           {t.reviews.fieldEmailHint}
         </span>
       </div>
 
       {status === "invalid" || status === "error" ? (
         <p role="alert" className="mt-6 text-sm text-destructive">
-          {status === "invalid" ? t.reviews.validation : t.reviews.error}
+          {status === "invalid" ? t.forms.summary : t.reviews.error}
         </p>
       ) : null}
 

@@ -1,6 +1,8 @@
 import { useState } from "react";
 
 import { Button } from "./Button";
+import { FieldError, invalidClass } from "./FieldError";
+import { fieldErrors, loyaltyLookupSchema } from "@/lib/schemas/forms";
 import { Section } from "./Section";
 import { SectionHeading } from "./SectionHeading";
 import { SECTIONS } from "@/config/site";
@@ -38,11 +40,16 @@ export function Loyalty() {
   const [identifier, setIdentifier] = useState("");
   const [card, setCard] = useState<Card | null>(null);
   const [status, setStatus] = useState<LookupState>("idle");
+  const [invalid, setInvalid] = useState(false);
 
   async function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
     const value = identifier.trim();
-    if (!value) return;
+    if (fieldErrors(loyaltyLookupSchema, { identifier: value }).identifier) {
+      setInvalid(true);
+      document.getElementById("loyalty-lookup")?.focus();
+      return;
+    }
 
     setStatus("sending");
     try {
@@ -150,7 +157,7 @@ export function Loyalty() {
             <p className="mt-3 text-sm leading-relaxed text-ink-foreground/60">{rewardLine}</p>
           </div>
 
-          <form onSubmit={handleSubmit} className="mt-8 border-t border-border pt-8">
+          <form noValidate onSubmit={handleSubmit} className="mt-8 border-t border-border pt-8">
             <label htmlFor="loyalty-lookup" className="label-luxe text-muted-foreground">
               {t.loyalty.lookupLabel}
             </label>
@@ -160,11 +167,14 @@ export function Loyalty() {
                 type="text"
                 inputMode="email"
                 autoComplete="email"
-                className={cn(fieldClass, "mt-0 sm:flex-1")}
+                className={cn(fieldClass, "mt-0 sm:flex-1", invalidClass(invalid))}
+                aria-invalid={invalid || undefined}
+                aria-describedby={invalid ? "loyalty-lookup-error" : undefined}
                 placeholder={t.loyalty.lookupPlaceholder}
                 value={identifier}
                 onChange={(event) => {
                   setIdentifier(event.target.value);
+                  setInvalid(false);
                   if (status !== "idle") setStatus("idle");
                 }}
                 maxLength={160}
@@ -178,6 +188,10 @@ export function Loyalty() {
                 {status === "sending" ? t.loyalty.lookupSending : t.loyalty.lookupCta}
               </Button>
             </div>
+            <FieldError
+              id="loyalty-lookup-error"
+              message={invalid ? t.forms.errIdentifier : undefined}
+            />
 
             <p
               role={status === "error" || status === "notfound" ? "alert" : "status"}
