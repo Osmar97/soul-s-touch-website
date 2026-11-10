@@ -143,7 +143,7 @@ export function Loyalty() {
 
             <p className="mt-7 text-sm text-ink-foreground/70" role="status">
               <span className="font-serif text-xl text-gold-soft">{completed}</span>
-              <span className="mx-2 text-ink-foreground/40">/ {GOAL}</span>
+              <span className="mx-2 text-ink-foreground/70">/ {GOAL}</span>
               {t.loyalty.progressLabel}
             </p>
 

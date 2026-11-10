@@ -39,6 +39,12 @@
   --color-gold-deep: var(--gold-deep);
   --color-beige: var(--beige);
   --color-destructive: var(--destructive);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
   --color-hairline: var(--hairline);
@@ -93,6 +99,13 @@
 
   --destructive: oklch(0.52 0.15 27);
   --destructive-foreground: oklch(0.98 0.005 85);
+  /* calm-luxury status colours — muted, AA (>=4.5:1) as text on ivory */
+  --success: oklch(0.5 0.07 145);
+  --success-foreground: oklch(0.98 0.005 85);
+  --warning: oklch(0.52 0.08 70);
+  --warning-foreground: oklch(0.98 0.005 85);
+  --info: oklch(0.5 0.05 235);
+  --info-foreground: oklch(0.98 0.005 85);
 
   --border: oklch(0.895 0.014 85);
   --hairline: oklch(0.74 0.055 84 / 35%);
@@ -123,6 +136,12 @@
   --gold-deep: oklch(0.75 0.05 84);
   --destructive: oklch(0.6 0.16 27);
   --destructive-foreground: oklch(0.98 0.005 85);
+  --success: oklch(0.76 0.07 145);
+  --success-foreground: oklch(0.145 0.004 60);
+  --warning: oklch(0.8 0.08 75);
+  --warning-foreground: oklch(0.145 0.004 60);
+  --info: oklch(0.76 0.05 235);
+  --info-foreground: oklch(0.145 0.004 60);
   --border: oklch(1 0 0 / 12%);
   --hairline: oklch(0.8 0.05 85 / 35%);
   --input: oklch(1 0 0 / 16%);

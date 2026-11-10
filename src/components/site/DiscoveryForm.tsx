@@ -164,7 +164,7 @@ export function DiscoveryForm() {
             maxLength={160}
             required
           />
-          <span className="mt-2 block text-xs leading-relaxed text-ink-foreground/45">
+          <span className="mt-2 block text-xs leading-relaxed text-ink-foreground/70">
             {t.discovery.contactHint}
           </span>
         </div>
@@ -187,7 +187,7 @@ export function DiscoveryForm() {
               maxLength={160}
               required
             />
-            <span className="mt-2 block text-xs leading-relaxed text-ink-foreground/45">
+            <span className="mt-2 block text-xs leading-relaxed text-ink-foreground/70">
               {t.discovery.referrerHint}
             </span>
           </div>
