@@ -79,7 +79,7 @@ export function Footer() {
         </div>
 
         <div className="mt-14 flex flex-col gap-6 border-t border-ink-foreground/10 pt-7 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-[0.6875rem] uppercase tracking-[0.18em] text-ink-foreground/40">
+          <p className="text-[0.6875rem] uppercase tracking-[0.18em] text-ink-foreground/70">
             &copy; {SITE.fullName}
           </p>
           <LanguageSwitcher tone="onInk" />
