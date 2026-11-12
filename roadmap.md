@@ -5,5 +5,5 @@
 - [x] Contrast on faint text
 - [x] Translation completeness + price test
 - [x] Form validation refactor (review, discovery, loyalty forms)
-- [ ] Split admin customers page into smaller parts
+- [x] Split admin customers page into smaller parts (+ rewards-ready filter)
 - [ ] Trust points beside the booking button (needs user's real wording)
