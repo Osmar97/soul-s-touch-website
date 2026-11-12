@@ -45,7 +45,7 @@ export function Loyalty() {
   async function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
     const value = identifier.trim();
-    if (fieldErrors(loyaltyLookupSchema, { identifier: value }).identifier) {
+    if (fieldErrors(loyaltyLookupSchema, { identifier: value })["identifier"]) {
       setInvalid(true);
       document.getElementById("loyalty-lookup")?.focus();
       return;
