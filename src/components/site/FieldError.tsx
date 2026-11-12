@@ -12,7 +12,7 @@ export function FieldError({
   tone = "light",
 }: {
   id: string;
-  message?: string;
+  message?: string | undefined;
   tone?: "light" | "ink";
 }) {
   if (!message) return null;

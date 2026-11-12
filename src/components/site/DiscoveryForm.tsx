@@ -131,7 +131,7 @@ export function DiscoveryForm() {
           </label>
           <select
             id={sourceId}
-            className={cn(fieldClass, "cursor-pointer appearance-none", invalidClass(!!errors.source, "ink"))}
+            className={cn(fieldClass, "cursor-pointer appearance-none", invalidClass(!!errors["source"], "ink"))}
             value={source}
             {...a11y("source", sourceId)}
             onChange={(event) => {
@@ -175,7 +175,7 @@ export function DiscoveryForm() {
             id={contactId}
             type="text"
             autoComplete="email"
-            className={cn(fieldClass, invalidClass(!!errors.contact, "ink"))}
+            className={cn(fieldClass, invalidClass(!!errors["contact"], "ink"))}
             placeholder={t.discovery.contactPlaceholder}
             value={contact}
             {...a11y("contact", contactId, `${contactId}-hint`)}
@@ -201,7 +201,7 @@ export function DiscoveryForm() {
             <input
               id={referrerId}
               type="text"
-              className={cn(fieldClass, invalidClass(!!errors.referrer, "ink"))}
+              className={cn(fieldClass, invalidClass(!!errors["referrer"], "ink"))}
               placeholder={t.discovery.referrerPlaceholder}
               value={referrer}
               {...a11y("referrer", referrerId, `${referrerId}-hint`)}

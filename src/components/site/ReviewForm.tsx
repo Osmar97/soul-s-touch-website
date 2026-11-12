@@ -78,7 +78,7 @@ export function ReviewForm({
         </label>
         <input
           id={nameId}
-          className={cn(fieldClass, invalidClass(!!errors.name))}
+          className={cn(fieldClass, invalidClass(!!errors["name"]))}
           value={name}
           onChange={(e) => {
             setName(e.target.value);
@@ -91,7 +91,7 @@ export function ReviewForm({
         <FieldError id={`${nameId}-error`} message={err("name")} />
       </div>
 
-      <fieldset className="mt-8" aria-describedby={errors.rating ? "review-form-rating-error" : undefined}>
+      <fieldset className="mt-8" aria-describedby={errors["rating"] ? "review-form-rating-error" : undefined}>
         <legend className="label-luxe text-muted-foreground">{t.reviews.fieldRating}</legend>
         <div className="mt-3 flex items-center gap-2">
           {[1, 2, 3, 4, 5].map((n) => (
@@ -125,7 +125,7 @@ export function ReviewForm({
         </label>
         <textarea
           id={bodyId}
-          className={cn(fieldClass, "min-h-32 resize-y leading-relaxed", invalidClass(!!errors.body))}
+          className={cn(fieldClass, "min-h-32 resize-y leading-relaxed", invalidClass(!!errors["body"]))}
           value={body}
           onChange={(e) => {
             setBody(e.target.value);
@@ -146,7 +146,7 @@ export function ReviewForm({
           id={emailId}
           type="email"
           autoComplete="email"
-          className={cn(fieldClass, invalidClass(!!errors.email))}
+          className={cn(fieldClass, invalidClass(!!errors["email"]))}
           value={email}
           onChange={(e) => {
             setEmail(e.target.value);
