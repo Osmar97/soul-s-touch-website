@@ -1,7 +1,7 @@
 import { Button } from "@/components/site/Button";
 import { statusLabels, type Loyalty } from "./customer-data";
 
-type Props = { loyalty?: Loyalty; completed: number; busy: boolean; onMarkUsed: () => void };
+type Props = { loyalty: Loyalty | undefined; completed: number; busy: boolean; onMarkUsed: () => void };
 
 export function CustomerLoyalty({ loyalty, completed, busy, onMarkUsed }: Props) {
   return (

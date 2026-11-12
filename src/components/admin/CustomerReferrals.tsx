@@ -2,7 +2,7 @@ import { Button } from "@/components/site/Button";
 import { statusLabels, type Referral, type ReferralRewardField } from "./customer-data";
 
 type Props = {
-  referredBy?: Referral;
+  referredBy: Referral | undefined;
   referred: Referral[];
   nameOf: (customerId: string) => string;
   busy: boolean;
