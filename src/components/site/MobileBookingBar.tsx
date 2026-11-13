@@ -9,6 +9,22 @@ import { cn } from "@/lib/utils";
  */
 export function MobileBookingBar() {
   const [visible, setVisible] = useState(false);
+  const [typing, setTyping] = useState(false);
+
+  // Hide while a form field is focused so the bar never covers inputs,
+  // inline errors or the submit button (mobile keyboards shrink the view).
+  useEffect(() => {
+    const isField = (el: EventTarget | null) =>
+      el instanceof HTMLElement && el.matches("input, textarea, select");
+    const onIn = (e: FocusEvent) => setTyping(isField(e.target));
+    const onOut = () => setTyping(false);
+    document.addEventListener("focusin", onIn);
+    document.addEventListener("focusout", onOut);
+    return () => {
+      document.removeEventListener("focusin", onIn);
+      document.removeEventListener("focusout", onOut);
+    };
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setVisible(window.scrollY > window.innerHeight * 0.9);
@@ -21,7 +37,7 @@ export function MobileBookingBar() {
     <div
       className={cn(
         "fixed inset-x-0 bottom-0 z-40 border-t border-gold/20 bg-background/90 px-5 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] backdrop-blur-md transition-all duration-500 lg:hidden",
-        visible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-full opacity-0",
+        visible && !typing ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-full opacity-0",
       )}
     >
       <BookingCta size="sm" className="w-full" />

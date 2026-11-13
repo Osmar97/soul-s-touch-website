@@ -91,7 +91,7 @@ export const en = {
     description: "Your experience matters.",
     empty: "Your experience could be our next story.",
     emptyCta: "Share your experience",
-    submitted: "Thank you — your words have been received and will appear once reviewed.",
+    submitted: "Thank you — your words have been received and Dani reads every review personally before it appears here, usually within a few days.",
     formTitle: "Share your experience",
     formIntro: "A few words are enough. Reviews appear once they have been read by Dani.",
     fieldName: "Name or display name",

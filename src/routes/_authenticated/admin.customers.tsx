@@ -24,7 +24,7 @@ export const Route = createFileRoute("/_authenticated/admin/customers")({
 function AdminCustomersPage() {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
-  const { query, actions, error } = useCustomerAdmin();
+  const { query, actions, error, saved } = useCustomerAdmin();
   const [search, setSearch] = useState("");
   const [rewardsOnly, setRewardsOnly] = useState(false);
 
@@ -68,13 +68,21 @@ function AdminCustomersPage() {
             That change could not be saved. Please try again.
           </p>
         ) : null}
+        <p role="status" aria-live="polite" className="mt-6 min-h-5 text-sm text-gold-deep">
+          {saved && !error ? "✓ Saved" : ""}
+        </p>
 
         {query.isLoading ? (
           <p className="mt-10 text-sm text-muted-foreground">Loading customers…</p>
         ) : query.isError ? (
-          <p role="alert" className="mt-10 text-sm text-destructive">
-            Customers could not be loaded. Only administrators can see these records.
-          </p>
+          <div className="mt-10">
+            <p role="alert" className="text-sm text-destructive">
+              Customers could not be loaded. Only administrators can see these records.
+            </p>
+            <Button className="mt-5" variant="outline" size="sm" onClick={() => query.refetch()}>
+              Try again
+            </Button>
+          </div>
         ) : rows.length === 0 ? (
           <p className="mt-10 text-sm text-muted-foreground">
             {rewardsOnly ? "No rewards waiting to be redeemed." : "No customers yet."}

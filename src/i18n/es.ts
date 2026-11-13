@@ -93,7 +93,7 @@ export const es: Dictionary = {
     description: "Tu experiencia importa.",
     empty: "Tu experiencia podría ser nuestra próxima historia.",
     emptyCta: "Comparte tu experiencia",
-    submitted: "Gracias — tus palabras se han recibido y aparecerán tras la revisión.",
+    submitted: "Gracias — tus palabras se han recibido y Dani lee cada reseña personalmente antes de publicarla, normalmente en pocos días.",
     formTitle: "Comparte tu experiencia",
     formIntro: "Bastan unas palabras. Las opiniones aparecen una vez leídas por Dani.",
     fieldName: "Nombre o nombre a mostrar",
