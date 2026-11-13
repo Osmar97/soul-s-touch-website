@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import type { CustomerActions, CustomerData, ReferralRewardField, SessionStatus } from "./customer-data";
@@ -36,8 +37,18 @@ export function useCustomerAdmin() {
 
   const mutation = useMutation({
     mutationFn: (job: () => Promise<void>) => job(),
-    onSuccess,
+    onSuccess: () => {
+      setSaved(true);
+      return onSuccess();
+    },
+    onMutate: () => setSaved(false),
   });
+  const [saved, setSaved] = useState(false);
+  useEffect(() => {
+    if (!saved) return;
+    const timer = window.setTimeout(() => setSaved(false), 2500);
+    return () => window.clearTimeout(timer);
+  }, [saved]);
 
   const actions: CustomerActions = {
     busy: mutation.isPending,
@@ -60,5 +71,5 @@ export function useCustomerAdmin() {
         .eq("id", id))),
   };
 
-  return { query, actions, error: mutation.error };
+  return { query, actions, error: mutation.error, saved };
 }

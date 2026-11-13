@@ -175,9 +175,14 @@ function AdminPage() {
             {reviews.isLoading ? (
               <p className="mt-10 text-sm text-muted-foreground">Loading reviews…</p>
             ) : reviews.isError ? (
-              <p role="alert" className="mt-10 text-sm text-destructive">
-                Reviews could not be loaded.
-              </p>
+              <div className="mt-10">
+                <p role="alert" className="text-sm text-destructive">
+                  Reviews could not be loaded.
+                </p>
+                <Button className="mt-5" variant="outline" size="sm" onClick={() => reviews.refetch()}>
+                  Try again
+                </Button>
+              </div>
             ) : visible.length === 0 ? (
               <p className="mt-10 text-sm text-muted-foreground">No reviews here.</p>
             ) : (
